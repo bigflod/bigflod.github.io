@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sitio en construcción</title>
+
+    <link rel="stylesheet" href="/estilos/main.css">
+</head>
+
+<body>
+    <!-- ============ NAV SUPERIOR ============ -->
+    <nav class="navbar">
+
+        <a href="/es/" class="logo">
+            <img src="/assets/logo.webp" alt="Logo" height="40">
+        </a>
+
+        <a href="/es/algoritmos/">Algoritmos</a>
+        <a href="/es/estructuras-de-datos/">Estructuras de Datos</a>
+
+        <!-- Icono idiomas -->
+        <img src="/assets/language-icon.webp"
+            class="language-menu-icon"
+            onclick="toggleLanguageMenu()">
+
+        <!-- Botón modo noche -->
+        <div class="toggle-container" onclick="toggleDarkMode()">
+            <div class="toggle-switch"></div>
+        </div>
+
+        <!-- Popup idiomas -->
+        <div id="languageMenu" class="language-popup-menu">
+            <button onclick="changeLanguage('es')">ES</button>
+            <button onclick="changeLanguage('en')">EN</button>
+            <button onclick="changeLanguage('fr')">FR</button>
+            <button onclick="changeLanguage('it')">IT</button>
+        </div>
+    </nav>
+
+
+    <!-- ============ CONTENEDOR DE 3 COLUMNAS ============ -->
+    <div class="page-layout">
+
+        <!-- SIDEBAR IZQUIERDA -->
+        <aside class="sidebar-left">
+
+            <h3>Navegación</h3>
+            <ul>
+<li><a href="/es/java/poo/">Poo</a></li>
+<ul>
+    <li><a href="/es/java/poo/herencia/">Herencia</a></li>
+    <li><a href="/es/java/poo/polimorfismo/">Polimorfismo</a></li>
+    <li><a href="/es/java/poo/this/">This</a></li>
+</ul>
+
+
+                
+            </ul>
+
+        </aside>
+
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main>
+            <img src="/assets/construction-site.webp" width="280">
+            <h2>Estamos trabajando en ello</h2>
+            <p>Esta sección aún no está lista, pero pronto estará disponible.</p>
+
+            <a href="/es/" class="back-button">Volver atrás</a>
+        </main>
+
+
+        <!-- SIDEBAR DERECHA (vacía por ahora) -->
+        <aside class="sidebar-right">
+            <!-- Vacío -->
+        </aside>
+
+    </div>
+
+
+    <!-- ============ SCRIPTS ============ -->
+    <script>
+        /* --- MOSTRAR / OCULTAR MENÚ DE IDIOMAS --- */
+        function toggleLanguageMenu() {
+            const menu = document.getElementById("languageMenu");
+            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+        }
+
+        /* --- CAMBIAR IDIOMA (SOLO URL) --- */
+        function changeLanguage(lang) {
+            const current = window.location.pathname;
+            const parts = current.split("/");
+            parts[1] = lang;   // sustituye /es/ por /en/ por ejemplo
+            window.location.href = parts.join("/");
+        }
+
+        /* --- MODO OSCURO --- */
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
+
+</body>
+</html>
+

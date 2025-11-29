@@ -1,0 +1,39 @@
+<!-- /index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Página de selección de idioma</title>
+    <meta name="robots" content="noindex">
+</head>
+<body>
+    <h1>Bienvenido</h1>
+    <p>Redirigiendo al idioma adecuado...</p>
+
+    <script>
+        const lang = (navigator.language || navigator.userLanguage).substring(0, 2);
+
+        switch (lang) {
+            case 'en':
+                window.location.href = '/en/';
+                break;
+            case 'it':
+                window.location.href = '/it/';
+                break;
+            case 'fr':
+                window.location.href = '/fr/';
+                break;
+            default:
+                window.location.href = '/es/';
+        }
+    </script>
+
+    <p>Si no eres redirigido automáticamente, selecciona tu idioma:</p>
+    <ul>
+        <li><a href="/es/">Español</a></li>
+        <li><a href="/en/">English</a></li>
+        <li><a href="/fr/">Français</a></li>
+        <li><a href="/it/">Italiano</a></li>
+    </ul>
+</body>
+</html>

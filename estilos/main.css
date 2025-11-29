@@ -1,0 +1,223 @@
+/* FILE: /estilos/main.css */
+/*
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fafafa;
+    color: #222;
+}  
+
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.navbar {
+    width: 100%;
+    background: #1f1f1f;
+    padding: 15px;
+    display: flex;
+    gap: 25px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+pre {
+    background: #eee;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+h1 {
+    margin-top: 0;
+}
+*/
+
+/* ============================
+   ESTILOS GENERALES
+============================ */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fafafa;
+    color: #222;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* MODO OSCURO */
+body.dark-mode {
+    background: #1b1b1b;
+    color: #ddd;
+}
+
+/* ============================
+   NAVBAR SUPERIOR
+============================ */
+.navbar {
+    width: 100%;
+    background: #1f1f1f;
+    padding: 15px;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Icono del menú de idiomas */
+.language-menu-icon {
+    margin-left: auto;
+    height: 28px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.language-menu-icon:hover {
+    transform: scale(1.15);
+}
+
+/* Popup idiomas */
+.language-popup-menu {
+    position: absolute;
+    background: white;
+    right: 20px;
+    top: 65px;
+    padding: 10px;
+    border-radius: 8px;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.language-popup-menu button {
+    margin: 5px 0;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+/* ============================
+   INTERRUPTOR MODO NOCHE
+============================ */
+.toggle-container {
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.toggle-switch {
+    width: 45px;
+    height: 22px;
+    background: #aaa;
+    border-radius: 20px;
+    position: relative;
+    transition: background 0.3s;
+}
+
+.toggle-switch:before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 3px;
+    transition: transform 0.3s;
+}
+
+/* Activado */
+body.dark-mode .toggle-switch {
+    background: #4caf50;
+}
+
+body.dark-mode .toggle-switch:before {
+    transform: translateX(22px);
+}
+
+/* ============================
+   LAYOUT A 3 COLUMNAS
+============================ */
+.page-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr 260px;
+    gap: 20px;
+    max-width: 1500px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* ============================
+   SIDE BARS
+============================ */
+.sidebar-left,
+.sidebar-right {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.08);
+    min-height: 200px;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Sticky sidebar izquierdo */
+.sidebar-left {
+    position: sticky;
+    top: 90px;
+}
+
+body.dark-mode .sidebar-left,
+body.dark-mode .sidebar-right,
+body.dark-mode main {
+    background: #2a2a2a;
+    color: white;
+}
+
+/* ============================
+   CONTENIDO PRINCIPAL
+============================ */
+main {
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+    margin-top: 0;
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+@media (max-width: 900px) {
+    .page-layout {
+        grid-template-columns: 1fr; /* Se apila todo */
+    }
+
+    .sidebar-left, .sidebar-right {
+        position: static;
+    }
+}

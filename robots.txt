@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /es/java/poo/herencia/
+Disallow: /es/java/poo/polimorfismo/
+Disallow: /es/java/poo/this/
+Disallow: /es/algoritmos/grafos/bfs/
+Disallow: /es/algoritmos/grafos/dfs/
+Disallow: /es/algoritmos/busqueda/busqueda-binaria/
+Disallow: /es/algoritmos/busqueda/busqueda-secuencial/
+Disallow: /es/estructuras-de-datos/pair/
+Disallow: /es/estructuras-de-datos/map/
+Disallow: /es/estructuras-de-datos/set/
+Allow: /
+Sitemap: https://tu-dominio.github.io/sitemap.xml
