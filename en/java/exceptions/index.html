@@ -9,18 +9,34 @@
 <body>
     <!-- ============ NAV SUPERIOR ============ -->
     <nav class="navbar">
+        <!-- Botón hamburguesa (abre/cierra sidebars) -->
+        <button id="menuToggle" class="menu-toggle" aria-label="Abrir paneles" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- LOGO -->
         <a href="/es/" class="logo">
             <img src="/assets/logo.webp" alt="Logo" height="40">
         </a>
-        <!-- Enlaces dinámicos de primer nivel -->
-        <a href="/en/java/">Java</a>
 
+        <!-- Enlaces dinámicos de primer nivel -->
+        <div class="nav-links">
+            <a href="/en/java/">Java</a>
+
+        </div>
+
+        <!-- (Opcional) espacio para iconos a la derecha si los quieres -->
     </nav>
+
+    <!-- Overlay que oscurece ligeramente la página cuando se abren los paneles -->
+    <div id="pageOverlay" class="page-overlay" aria-hidden="true"></div>
 
     <!-- ============ CONTENEDOR DE 3 COLUMNAS ============ -->
     <div class="page-layout">
         <!-- SIDEBAR IZQUIERDA -->
-        <aside class="sidebar-left">
+        <aside class="sidebar-left" aria-hidden="true">
             <!-- TÍTULO DE CARPETA Y NAVEGACIÓN -->
 <h2>Exceptions</h2>
 <h2 class="titulo-carpeta">Navegación</h2>
@@ -38,29 +54,106 @@
             <a href="/es/" class="back-button">Volver atrás</a>
         </main>
 
-        <!-- SIDEBAR DERECHA (vacía por ahora) -->
-        <aside class="sidebar-right">
-            <!-- Vacío -->
+        <!-- SIDEBAR DERECHA (Ajustes) -->
+        <aside class="sidebar-right" aria-hidden="true">
+            <h2>Ajustes</h2>
+
+            <div class="setting-block">
+                <h3>Idiomas</h3>
+                <div class="language-entry">
+                    <img src="/assets/language-icon.webp" alt="Idiomas" height="20">
+                    <span class="language-label">Idiomas</span>
+                    <!-- Si quieres, aquí puedes añadir botones con onclick="changeLanguage('es')" -->
+                </div>
+            </div>
+
+            <div class="setting-block">
+                <h3>Modo</h3>
+                <!-- Botón modo oscuro / claro -->
+                <button id="darkModeBtn" class="dark-mode-button" title="Usar modo oscuro">
+                    <img id="darkModeIcon" src="/assets/moon-icon.webp" alt="Dark mode icon" height="24">
+                </button>
+            </div>
         </aside>
     </div>
 
     <!-- ============ SCRIPTS ============ -->
     <script>
-        function toggleLanguageMenu() {
-            const menu = document.getElementById("languageMenu");
-            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-        }
+        (function(){
+            // ---------- Helpers ----------
+            function qs(sel){ return document.querySelector(sel); }
+            function qsa(sel){ return Array.from(document.querySelectorAll(sel)); }
 
-        function changeLanguage(lang) {
-            const current = window.location.pathname;
-            const parts = current.split("/");
-            parts[1] = lang;
-            window.location.href = parts.join("/");
-        }
+            // ---------- Toggle Paneles (hamburger) ----------
+            const menuToggle = document.getElementById('menuToggle');
+            const pageOverlay = document.getElementById('pageOverlay');
 
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark-mode");
-        }
+            function openPanels() {
+                document.body.classList.add('panels-open');
+                menuToggle.classList.add('open');
+                menuToggle.setAttribute('aria-expanded', 'true');
+                pageOverlay.setAttribute('aria-hidden', 'false');
+                pageOverlay.style.display = 'block';
+            }
+            function closePanels() {
+                document.body.classList.remove('panels-open');
+                menuToggle.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                pageOverlay.setAttribute('aria-hidden', 'true');
+                pageOverlay.style.display = 'none';
+            }
+            function togglePanels(){
+                if(document.body.classList.contains('panels-open')) closePanels();
+                else openPanels();
+            }
+
+            menuToggle.addEventListener('click', togglePanels);
+            pageOverlay.addEventListener('click', closePanels);
+            document.addEventListener('keydown', function(e){
+                if(e.key === 'Escape') closePanels();
+            });
+
+            // ---------- Toggle language menu (si sigues usando un popup) ----------
+            window.toggleLanguageMenu = function() {
+                const menu = document.getElementById("languageMenu");
+                if (!menu) return;
+                menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+            }
+
+            window.changeLanguage = function(lang) {
+                const current = window.location.pathname;
+                const parts = current.split("/");
+                parts[1] = lang;
+                window.location.href = parts.join("/");
+            }
+
+            // ---------- Dark mode toggle (y cambiar icono) ----------
+            function setDarkIcon(isDark){
+                const icon = document.getElementById("darkModeIcon");
+                const btn = document.getElementById("darkModeBtn");
+                if(!icon || !btn) return;
+                if(isDark){
+                    icon.src = "/assets/sun-icon.svg";
+                    icon.alt = "Modo claro";
+                    btn.title = "Usar modo claro";
+                } else {
+                    icon.src = "/assets/moon-icon.svg";
+                    icon.alt = "Modo oscuro";
+                    btn.title = "Usar modo oscuro";
+                }
+            }
+
+            window.toggleDarkMode = function(){
+                document.body.classList.toggle("dark-mode");
+                setDarkIcon(document.body.classList.contains("dark-mode"));
+            }
+
+            // inicializar icono según estado
+            document.addEventListener('DOMContentLoaded', function(){
+                setDarkIcon(document.body.classList.contains('dark-mode'));
+            });
+
+        })();
     </script>
 </body>
 </html>

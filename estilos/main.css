@@ -70,6 +70,130 @@ body.dark-mode {
     width: 100%;
 }
 
+/* --------------------------
+   MENU HAMBURGUESA / PANEL TOGGLE
+   (sin imágenes; solo CSS)
+   -------------------------- */
+.menu-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 32px;
+    padding: 6px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin-right: 10px;
+    align-items: center;
+}
+.menu-toggle span{
+    display: block;
+    width: 22px;
+    height: 3px;
+    background: #9aa0a6; /* tono gris que proponías */
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.2s ease, background 0.2s ease;
+}
+/* Animación a X */
+.menu-toggle.open span:nth-child(1){
+    transform: translateY(7px) rotate(45deg);
+    background: #9aa0a6;
+}
+.menu-toggle.open span:nth-child(2){
+    opacity: 0;
+}
+.menu-toggle.open span:nth-child(3){
+    transform: translateY(-7px) rotate(-45deg);
+    background: #9aa0a6;
+}
+
+/* --------------------------
+   OVERLAY y PANEL VISIBILITY
+   -------------------------- */
+.page-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.06); /* muy sutil oscurecimiento */
+    display: none;
+    z-index: 40;
+}
+
+/* Ajuste del grid según panels state:
+   - por defecto (sin panels-open): colapsa sidebars
+   - con panels-open: muestra sidebars (state "abierto")
+*/
+body.panels-open .page-layout {
+    grid-template-columns: 260px 1fr 260px;
+}
+
+body:not(.panels-open) .page-layout {
+    grid-template-columns: 0 1fr 0;
+}
+
+/* Sidebars: transición suave al aparecer/desaparecer */
+.sidebar-left, .sidebar-right {
+    transition: width 0.25s ease, opacity 0.25s ease, padding 0.25s ease;
+    overflow: hidden;
+    z-index: 50; /* por encima del overlay */
+}
+
+/* Cuando están colapsadas (sin panels-open) se ocultan visualmente */
+body:not(.panels-open) .sidebar-left,
+body:not(.panels-open) .sidebar-right {
+    width: 0;
+    padding: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Cuando están abiertas, usar valores normales (si tu CSS original ya los da, esto refuerza) */
+body.panels-open .sidebar-left,
+body.panels-open .sidebar-right {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Aseguramos que main quede ligeramente "atenuado" cuando paneles abiertos,
+   para dirigir atención a los paneles (el overlay también ayuda) */
+body.panels-open main {
+    filter: brightness(0.98);
+}
+
+/* --------------------------
+   ESTILO LINKS EN SIDEBAR (letras sólidas + glow)
+   -------------------------- */
+.sidebar-left a,
+.sidebar-right a {
+    color: inherit;          /* hereda color del contenedor */
+    text-decoration: none;
+    font-weight: 600;        /* más "sólido" */
+}
+
+/* Glow suave al pasar el ratón */
+.sidebar-left a:hover,
+.sidebar-right a:hover {
+    text-shadow: 0 0 8px #00e5ff;
+}
+
+/* Si quieres que el texto del sidebar tenga apariencia similar a la nav bar */
+.sidebar-left li, .sidebar-left a {
+    color: #222;
+}
+body.dark-mode .sidebar-left li, body.dark-mode .sidebar-left a {
+    color: #fff;
+}
+
+/* --------------------------
+   Ajustes para mobile (pequeñas mejoras)
+   -------------------------- */
+@media (max-width: 900px) {
+    .menu-toggle { margin-right: 6px; }
+    .nav-links { gap: 10px; }
+    body:not(.panels-open) .page-layout { grid-template-columns: 0 1fr 0; }
+    body.panels-open .page-layout { grid-template-columns: 220px 1fr 220px; }
+}
 
 /* ============================
    NAV LINKS (nuevo)
