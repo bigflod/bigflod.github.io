@@ -21,5 +21,12 @@ Disallow: /es/estructuras-de-datos/map.html
 Disallow: /es/estructuras-de-datos/set.html
 Disallow: /es/vhdl/
 Disallow: /es/vhdl/conceptos-basicos/
+Disallow: /en/java/
+Disallow: /en/java/oop/
+Disallow: /en/java/oop/inheritance.html
+Disallow: /en/java/oop/polymorphism.html
+Disallow: /en/java/oop/this.html
+Disallow: /en/java/exceptions/
+Disallow: /en/java/files/
 Allow: /
 Sitemap: https://tu-dominio.github.io/sitemap.xml
