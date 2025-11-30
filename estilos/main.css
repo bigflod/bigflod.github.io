@@ -36,6 +36,21 @@ body.dark-mode {
     font-size: 18px;
 }
 
+.gradient {
+    background: linear-gradient(90deg, #00e5ff, #ff0077, #26ff81);
+    background-size: 300%;
+    animation: gradientMove 6s infinite linear;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0%; }
+    100% { background-position: 100%; }
+}
+
+/* Subrayado moderno al pasar el ratón
 .navbar a {
     position: relative;
 }
@@ -54,6 +69,7 @@ body.dark-mode {
 .navbar a:hover::after {
     width: 100%;
 }
+*/
 
 /* ============================
    NAV LINKS (nuevo)
@@ -68,7 +84,6 @@ body.dark-mode {
     flex-shrink: 1;
 }
 
-/* Evitar que enlaces largos rompan la barra */
 .nav-links a {
     white-space: nowrap;
 }
@@ -206,7 +221,6 @@ h1, h2 {
         position: static;
     }
 
-    /* Evitar saturación en móviles */
     .nav-links {
         justify-content: center;
         gap: 12px;
@@ -220,4 +234,21 @@ h1, h2 {
     font-size: 1.3em;
     font-weight: bold;
     margin-bottom: 8px;
+}
+
+/* ============================
+   ICONOS NAVBAR CON GRADIENTE
+============================ */
+
+.nav-links a i {
+    transition: background 0.4s ease, -webkit-text-fill-color 0.4s ease;
+}
+
+.nav-links a:hover i {
+    background: linear-gradient(90deg, #00e5ff, #ff0077, #26ff81);
+    background-size: 300%;
+    animation: gradientMove 6s infinite linear;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
