@@ -50,7 +50,16 @@ body.dark-mode {
     100% { background-position: 100%; }
 }
 */
-/* Subrayado moderno al pasar el ratón */
+
+/* Escala + brillo */
+a:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+    transition: 0.2s ease;
+}
+
+/*
+
 .navbar a {
     position: relative;
 }
@@ -69,7 +78,7 @@ body.dark-mode {
 .navbar a:hover::after {
     width: 100%;
 }
-
+*/
 
 /* ============================
    NAV LINKS (nuevo)
@@ -259,3 +268,4 @@ h1, h2 {
     color: transparent;
     -webkit-text-fill-color: transparent;
 }
+
