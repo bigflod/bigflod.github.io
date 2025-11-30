@@ -78,7 +78,7 @@ body.dark-mode {
 .nav-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 18px;              /* <--- SEPARACIÓN ENTRE ENLACES */
+    gap: 18px;              
     align-items: center;
     justify-content: center;
     flex-shrink: 1;
@@ -241,14 +241,21 @@ h1, h2 {
 ============================ */
 
 .nav-links a i {
-    transition: background 0.4s ease, -webkit-text-fill-color 0.4s ease;
+    color: white;     /* icono normal */
+    transition: 
+        background 0.4s ease,
+        color 0.4s ease,
+        -webkit-text-fill-color 0.4s ease;
 }
 
 .nav-links a:hover i {
     background: linear-gradient(90deg, #00e5ff, #ff0077, #26ff81);
     background-size: 300%;
     animation: gradientMove 6s infinite linear;
+
     background-clip: text;
     -webkit-background-clip: text;
+
+    color: transparent;
     -webkit-text-fill-color: transparent;
 }
