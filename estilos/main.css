@@ -52,14 +52,21 @@ body.dark-mode {
 */
 
 /* Escala + brillo */
+/*
 a:hover {
     transform: scale(1.05);
     filter: brightness(1.2);
     transition: 0.2s ease;
 }
+*/
 
+/* Glow suave*/
+a:hover {
+    text-shadow: 0 0 8px #00e5ff;
+}
+
+/* Subrayado dinamico
 /*
-
 .navbar a {
     position: relative;
 }
@@ -268,4 +275,5 @@ h1, h2 {
     color: transparent;
     -webkit-text-fill-color: transparent;
 }
+
 
