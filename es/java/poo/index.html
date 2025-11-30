@@ -16,8 +16,8 @@
             <img src="/assets/logo.webp" alt="Logo" height="40">
         </a>
 
-        <a href="/es/algoritmos/">Algoritmos</a>
-        <a href="/es/estructuras-de-datos/">Estructuras de Datos</a>
+        <a href="/es/java/">Java</a>
+        
 
         <!-- Icono idiomas -->
         <img src="/assets/language-icon.webp"
@@ -38,7 +38,6 @@
         </div>
     </nav>
 
-
     <!-- ============ CONTENEDOR DE 3 COLUMNAS ============ -->
     <div class="page-layout">
 
@@ -47,19 +46,15 @@
 
             <h3>Navegación</h3>
             <ul>
-<li><a href="/es/java/poo/">Poo</a></li>
 <ul>
     <li><a href="/es/java/poo/herencia.html">Herencia</a></li>
     <li><a href="/es/java/poo/polimorfismo.html">Polimorfismo</a></li>
     <li><a href="/es/java/poo/this.html">This</a></li>
 </ul>
 
-
-                
             </ul>
 
         </aside>
-
 
         <!-- CONTENIDO PRINCIPAL -->
         <main>
@@ -70,7 +65,6 @@
             <a href="/es/" class="back-button">Volver atrás</a>
         </main>
 
-
         <!-- SIDEBAR DERECHA (vacía por ahora) -->
         <aside class="sidebar-right">
             <!-- Vacío -->
@@ -78,24 +72,20 @@
 
     </div>
 
-
     <!-- ============ SCRIPTS ============ -->
     <script>
-        /* --- MOSTRAR / OCULTAR MENÚ DE IDIOMAS --- */
         function toggleLanguageMenu() {
             const menu = document.getElementById("languageMenu");
             menu.style.display = menu.style.display === "flex" ? "none" : "flex";
         }
 
-        /* --- CAMBIAR IDIOMA (SOLO URL) --- */
         function changeLanguage(lang) {
             const current = window.location.pathname;
             const parts = current.split("/");
-            parts[1] = lang;   // sustituye /es/ por /en/ por ejemplo
+            parts[1] = lang;
             window.location.href = parts.join("/");
         }
 
-        /* --- MODO OSCURO --- */
         function toggleDarkMode() {
             document.body.classList.toggle("dark-mode");
         }
@@ -103,4 +93,3 @@
 
 </body>
 </html>
-
