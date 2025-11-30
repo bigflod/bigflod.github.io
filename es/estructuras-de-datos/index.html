@@ -4,27 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Sitio en construcción</title>
-
     <link rel="stylesheet" href="/estilos/main.css">
 </head>
-
 <body>
     <!-- ============ NAV SUPERIOR ============ -->
     <nav class="navbar">
-
         <a href="/es/" class="logo">
             <img src="/assets/logo.webp" alt="Logo" height="40">
         </a>
-
+        <!-- Enlaces dinámicos de primer nivel -->
         <a href="/es/java/">Java</a>
-        <a href="/es/algoritmos/">Algoritmos</a>
-        <span class="active">Estructuras-de-datos</span>
-        
+<a href="/es/algoritmos/">Algoritmos</a>
+<a href="/es/estructuras-de-datos/">Estructuras-de-datos</a>
+<a href="/es/vhdl/">Vhdl</a>
+
 
         <!-- Icono idiomas -->
-        <img src="/assets/language-icon.webp"
-            class="language-menu-icon"
-            onclick="toggleLanguageMenu()">
+        <img src="/assets/language-icon.webp" class="language-menu-icon" onclick="toggleLanguageMenu()">
 
         <!-- Botón modo noche -->
         <div class="toggle-container" onclick="toggleDarkMode()">
@@ -42,20 +38,15 @@
 
     <!-- ============ CONTENEDOR DE 3 COLUMNAS ============ -->
     <div class="page-layout">
-
         <!-- SIDEBAR IZQUIERDA -->
         <aside class="sidebar-left">
-
             <h3>Navegación</h3>
             <ul>
-<ul>
     <li><a href="/es/estructuras-de-datos/pair.html">Pair</a></li>
     <li><a href="/es/estructuras-de-datos/map.html">Map</a></li>
     <li><a href="/es/estructuras-de-datos/set.html">Set</a></li>
-</ul>
 
             </ul>
-
         </aside>
 
         <!-- CONTENIDO PRINCIPAL -->
@@ -71,7 +62,6 @@
         <aside class="sidebar-right">
             <!-- Vacío -->
         </aside>
-
     </div>
 
     <!-- ============ SCRIPTS ============ -->
@@ -92,6 +82,5 @@
             document.body.classList.toggle("dark-mode");
         }
     </script>
-
 </body>
 </html>
