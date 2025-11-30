@@ -1,61 +1,89 @@
 /* ============================
-   ESTILOS GENERALES
+   RESET Y BASE
 ============================ */
-body {
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: Arial, sans-serif;
     background: #fafafa;
     color: #222;
-    transition: background 0.3s, color 0.3s;
+    transition: background .3s, color .3s;
+    overflow-x: hidden;
 }
 
-/* MODO OSCURO */
 body.dark-mode {
     background: #1b1b1b;
     color: #ddd;
 }
 
 /* ============================
-   NAVBAR SUPERIOR
+   NAV SUPERIOR
 ============================ */
-
 .navbar {
     display: flex;
-    background: #1f1f1f;
-    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;        
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px 20px;
+    justify-content: space-between;
+    background: #1f1f1f;
+    color: white;
+    padding: 12px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 2000;
 }
 
-.navbar a {
+/* Botón menú hamburguesa */
+#menuToggle {
+    width: 35px;
+    height: 28px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 2100;
+}
+
+#menuToggle span {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background: #ccc;
+    border-radius: 3px;
+    margin: 5px 0;
+    transition: .3s;
+}
+
+/* Animación a X */
+#menuToggle.open .bar1 {
+    transform: translateY(9px) rotate(45deg);
+}
+
+#menuToggle.open .bar2 {
+    opacity: 0;
+}
+
+#menuToggle.open .bar3 {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Logo */
+.navbar .logo img {
+    height: 40px;
+}
+
+/* Enlaces primero nivel */
+.nav-links a {
     color: white;
+    margin-left: 20px;
     text-decoration: none;
     font-size: 18px;
-}
-/*
-.gradient {
-    background: linear-gradient(90deg, #00e5ff, #ff0077, #26ff81);
-    background-size: 300%;
-    animation: gradientMove 6s infinite linear;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-}
-
-@keyframes gradientMove {
-    0% { background-position: 0%; }
-    100% { background-position: 100%; }
-}
-*/
-/* Subrayado moderno al pasar el ratón */
-.navbar a {
     position: relative;
 }
 
-.navbar a::after {
+.nav-links a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -66,170 +94,126 @@ body.dark-mode {
     transition: width .3s;
 }
 
-.navbar a:hover::after {
+.nav-links a:hover::after {
     width: 100%;
 }
 
-/* --------------------------
-   MENU HAMBURGUESA / PANEL TOGGLE
-   (sin imágenes; solo CSS)
-   -------------------------- */
-.menu-toggle {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5px;
-    width: 36px;
-    height: 32px;
-    padding: 6px;
-    border: none;
-    background: none;
-    cursor: pointer;
-    margin-right: 10px;
-    align-items: center;
-}
-.menu-toggle span{
-    display: block;
-    width: 22px;
-    height: 3px;
-    background: #9aa0a6; /* tono gris que proponías */
-    border-radius: 2px;
-    transition: transform 0.25s ease, opacity 0.2s ease, background 0.2s ease;
-}
-/* Animación a X */
-.menu-toggle.open span:nth-child(1){
-    transform: translateY(7px) rotate(45deg);
-    background: #9aa0a6;
-}
-.menu-toggle.open span:nth-child(2){
-    opacity: 0;
-}
-.menu-toggle.open span:nth-child(3){
-    transform: translateY(-7px) rotate(-45deg);
-    background: #9aa0a6;
-}
-
-/* --------------------------
-   OVERLAY y PANEL VISIBILITY
-   -------------------------- */
-.page-overlay {
+/* ============================
+   MAIN (oscurecido al abrir menú)
+============================ */
+#contentOverlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.06); /* muy sutil oscurecimiento */
-    display: none;
-    z-index: 40;
-}
-
-/* Ajuste del grid según panels state:
-   - por defecto (sin panels-open): colapsa sidebars
-   - con panels-open: muestra sidebars (state "abierto")
-*/
-body.panels-open .page-layout {
-    grid-template-columns: 260px 1fr 260px;
-}
-
-body:not(.panels-open) .page-layout {
-    grid-template-columns: 0 1fr 0;
-}
-
-/* Sidebars: transición suave al aparecer/desaparecer */
-.sidebar-left, .sidebar-right {
-    transition: width 0.25s ease, opacity 0.25s ease, padding 0.25s ease;
-    overflow: hidden;
-    z-index: 50; /* por encima del overlay */
-}
-
-/* Cuando están colapsadas (sin panels-open) se ocultan visualmente */
-body:not(.panels-open) .sidebar-left,
-body:not(.panels-open) .sidebar-right {
-    width: 0;
-    padding: 0;
-    opacity: 0;
+    background: rgba(0,0,0,0);
     pointer-events: none;
+    transition: .3s;
+    z-index: 1500;
 }
 
-/* Cuando están abiertas, usar valores normales (si tu CSS original ya los da, esto refuerza) */
-body.panels-open .sidebar-left,
-body.panels-open .sidebar-right {
-    opacity: 1;
+body.sidebars-open #contentOverlay {
+    background: rgba(0,0,0,0.15);
     pointer-events: auto;
 }
 
-/* Aseguramos que main quede ligeramente "atenuado" cuando paneles abiertos,
-   para dirigir atención a los paneles (el overlay también ayuda) */
-body.panels-open main {
-    filter: brightness(0.98);
+/* ============================
+   SIDEBARS (superpuestas)
+============================ */
+.sidebar {
+    position: fixed;
+    top: 0;
+    width: 260px;
+    height: 100vh;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.25);
+    transition: transform .3s, background .3s, color .3s;
+    overflow-y: auto;
+    z-index: 1900;
 }
 
-/* --------------------------
-   ESTILO LINKS EN SIDEBAR (letras sólidas + glow)
-   -------------------------- */
-.sidebar-left a,
-.sidebar-right a {
-    color: inherit;          /* hereda color del contenedor */
+body.dark-mode .sidebar {
+    background: #2a2a2a;
+    color: white;
+}
+
+.sidebar-left {
+    left: 0;
+    transform: translateX(-100%);
+}
+
+.sidebar-right {
+    right: 0;
+    transform: translateX(100%);
+}
+
+body.sidebars-open .sidebar-left {
+    transform: translateX(0);
+}
+
+body.sidebars-open .sidebar-right {
+    transform: translateX(0);
+}
+
+/* ============================
+   ENLACES LATERALES
+============================ */
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    margin: 10px 0;
+}
+
+.sidebar a {
+    color: #0073ff;
+    font-weight: bold;
     text-decoration: none;
-    font-weight: 600;        /* más "sólido" */
+    transition: .2s;
 }
 
-/* Glow suave al pasar el ratón */
-.sidebar-left a:hover,
-.sidebar-right a:hover {
+/* Glow */
+.sidebar a:hover {
     text-shadow: 0 0 8px #00e5ff;
 }
 
-/* Si quieres que el texto del sidebar tenga apariencia similar a la nav bar */
-.sidebar-left li, .sidebar-left a {
-    color: #222;
-}
-body.dark-mode .sidebar-left li, body.dark-mode .sidebar-left a {
-    color: #fff;
-}
-
-/* --------------------------
-   Ajustes para mobile (pequeñas mejoras)
-   -------------------------- */
-@media (max-width: 900px) {
-    .menu-toggle { margin-right: 6px; }
-    .nav-links { gap: 10px; }
-    body:not(.panels-open) .page-layout { grid-template-columns: 0 1fr 0; }
-    body.panels-open .page-layout { grid-template-columns: 220px 1fr 220px; }
+/* ============================
+   TITULOS DE CARPETA
+============================ */
+.titulo-carpeta {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
 
 /* ============================
-   NAV LINKS (nuevo)
-   Separación y orden de enlaces
+   DARK MODE BUTTON
 ============================ */
-.nav-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 18px;              
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 1;
-}
-
-.nav-links a {
-    white-space: nowrap;
-}
-
-/* ============================
-   ICONO IDIOMAS
-============================ */
-.language-menu-icon {
-    height: 28px;
+.dark-mode-button {
+    background: none;
+    border: none;
     cursor: pointer;
-    transition: transform 0.2s;
+    padding: 6px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
 }
 
-.language-menu-icon:hover {
-    transform: scale(1.15);
+.dark-mode-button:hover {
+    background: rgba(0,0,0,0.1);
 }
 
+body.dark-mode .dark-mode-button:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+/* ============================
+   POPUP IDIOMAS
+============================ */
 .language-popup-menu {
     position: absolute;
-    background: white;
     right: 20px;
     top: 65px;
+    background: white;
     padding: 10px;
     border-radius: 8px;
     display: none;
@@ -237,149 +221,12 @@ body.dark-mode .sidebar-left li, body.dark-mode .sidebar-left a {
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
+body.dark-mode .language-popup-menu {
+    background: #2a2a2a;
+}
+
 .language-popup-menu button {
     margin: 5px 0;
     padding: 6px 12px;
     cursor: pointer;
-}
-
-/* ============================
-   INTERRUPTOR MODO NOCHE
-============================ */
-.toggle-container {
-    margin-left: 15px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.toggle-switch {
-    width: 45px;
-    height: 22px;
-    background: #aaa;
-    border-radius: 20px;
-    position: relative;
-    transition: background 0.3s;
-}
-
-.toggle-switch:before {
-    content: "";
-    width: 18px;
-    height: 18px;
-    background: white;
-    border-radius: 50%;
-    position: absolute;
-    top: 2px;
-    left: 3px;
-    transition: transform 0.3s;
-}
-
-body.dark-mode .toggle-switch {
-    background: #4caf50;
-}
-
-body.dark-mode .toggle-switch:before {
-    transform: translateX(22px);
-}
-
-/* ============================
-   LAYOUT A 3 COLUMNAS
-============================ */
-.page-layout {
-    display: grid;
-    grid-template-columns: 260px 1fr 260px;
-    gap: 20px;
-    max-width: 1500px;
-    margin: auto;
-    padding: 20px;
-}
-
-/* ============================
-   SIDE BARS
-============================ */
-.sidebar-left,
-.sidebar-right {
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.08);
-    min-height: 200px;
-    transition: background 0.3s, color 0.3s;
-}
-
-.sidebar-left {
-    position: sticky;
-    top: 90px;
-}
-
-body.dark-mode .sidebar-left,
-body.dark-mode .sidebar-right,
-body.dark-mode main {
-    background: #2a2a2a;
-    color: white;
-}
-
-/* ============================
-   CONTENIDO PRINCIPAL
-============================ */
-main {
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-h1, h2 {
-    margin-top: 0;
-}
-
-/* ============================
-   RESPONSIVE
-============================ */
-@media (max-width: 900px) {
-    .page-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .sidebar-left, .sidebar-right {
-        position: static;
-    }
-
-    .nav-links {
-        justify-content: center;
-        gap: 12px;
-    }
-}
-
-/* ============================
-   TÍTULO CARPETA
-============================ */
-.titulo-carpeta {
-    font-size: 1.3em;
-    font-weight: bold;
-    margin-bottom: 8px;
-}
-
-/* ============================
-   ICONOS NAVBAR CON GRADIENTE
-============================ */
-
-.nav-links a i {
-    color: white;     /* icono normal */
-    transition: 
-        background 0.4s ease,
-        color 0.4s ease,
-        -webkit-text-fill-color 0.4s ease;
-}
-
-.nav-links a:hover i {
-    background: linear-gradient(90deg, #00e5ff, #ff0077, #26ff81);
-    background-size: 300%;
-    animation: gradientMove 6s infinite linear;
-
-    background-clip: text;
-    -webkit-background-clip: text;
-
-    color: transparent;
-    -webkit-text-fill-color: transparent;
 }

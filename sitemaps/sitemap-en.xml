@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://bigflod.github.io/en/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/en/java/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/en/java/exceptions/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/en/java/files/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/en/java/oop/</loc>
+  </url>
+
+</urlset>

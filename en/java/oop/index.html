@@ -1,163 +1,64 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Sitio en construcción</title>
-    <link rel="stylesheet" href="/estilos/main.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Oop</title>
+  <link rel="stylesheet" href="/estilos/main.css">
 </head>
 <body>
-    <!-- ============ NAV SUPERIOR ============ -->
-    <nav class="navbar">
-        <!-- Botón hamburguesa (abre/cierra sidebars) -->
-        <button id="menuToggle" class="menu-toggle" aria-label="Abrir paneles" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
 
-        <!-- LOGO -->
-        <a href="/es/" class="logo">
-            <img src="/assets/logo.webp" alt="Logo" height="40">
-        </a>
-
-        <!-- Enlaces dinámicos de primer nivel -->
-        <div class="nav-links">
+<nav class="navbar">
+  <a class="logo" href="/en/"><img src="/assets/logo.webp" alt="Logo" height="40"></a>
+  <div class="nav-links">
             <a href="/en/java/">Java</a>
 
-        </div>
+  </div>
+  <button id="menuToggle" class="menu-toggle" aria-label="Abrir paneles"><span class="bar1"></span><span class="bar2"></span><span class="bar3"></span></button>
+</nav>
 
-        <!-- (Opcional) espacio para iconos a la derecha si los quieres -->
-    </nav>
+<div id="pageOverlay" class="page-overlay" style="display:none"></div>
 
-    <!-- Overlay que oscurece ligeramente la página cuando se abren los paneles -->
-    <div id="pageOverlay" class="page-overlay" aria-hidden="true"></div>
+<aside id="sidebar-left" class="sidebar">
+  <h2 class="titulo-carpeta">Oop</h2>
+  <h2>Navegación</h2>
+  <ul>
+      <li><a href="/en/java/oop/inheritance.html">Inheritance</a></li>
+      <li><a href="/en/java/oop/polymorphism.html">Polymorphism</a></li>
+      <li><a href="/en/java/oop/this.html">This</a></li>
 
-    <!-- ============ CONTENEDOR DE 3 COLUMNAS ============ -->
-    <div class="page-layout">
-        <!-- SIDEBAR IZQUIERDA -->
-        <aside class="sidebar-left" aria-hidden="true">
-            <!-- TÍTULO DE CARPETA Y NAVEGACIÓN -->
-<h2>Oop</h2>
-<h2 class="titulo-carpeta">Navegación</h2>
-<ul>
-    <li><a href="/en/java/oop/inheritance.html">Inheritance</a></li>
-    <li><a href="/en/java/oop/polymorphism.html">Polymorphism</a></li>
-    <li><a href="/en/java/oop/this.html">This</a></li>
+  </ul>
+</aside>
 
-        </ul>
-        </aside>
+<main>
+<img src="/assets/construction-site.webp" width="280">
+<h2>Estamos trabajando en ello</h2>
+<p>Sección <strong>Oop</strong> en construcción.</p>
+<a href="/en/java/oop/" class="back-button">Volver atrás</a>
 
-        <!-- CONTENIDO PRINCIPAL -->
-        <main>
-            <img src="/assets/construction-site.webp" width="280">
-            <h2>Estamos trabajando en ello</h2>
-            <p>Esta sección aún no está lista, pero pronto estará disponible.</p>
+</main>
 
-            <a href="/es/" class="back-button">Volver atrás</a>
-        </main>
-
-        <!-- SIDEBAR DERECHA (Ajustes) -->
-        <aside class="sidebar-right" aria-hidden="true">
-            <h2>Ajustes</h2>
-
-            <div class="setting-block">
-                <h3>Idiomas</h3>
-                <div class="language-entry">
-                    <img src="/assets/language-icon.webp" alt="Idiomas" height="20">
-                    <span class="language-label">Idiomas</span>
-                    <!-- Si quieres, aquí puedes añadir botones con onclick="changeLanguage('es')" -->
-                </div>
-            </div>
-
-            <div class="setting-block">
-                <h3>Modo</h3>
-                <!-- Botón modo oscuro / claro -->
-                <button id="darkModeBtn" class="dark-mode-button" title="Usar modo oscuro">
-                    <img id="darkModeIcon" src="/assets/moon-icon.webp" alt="Dark mode icon" height="24">
-                </button>
-            </div>
-        </aside>
+<aside id="sidebar-right" class="sidebar">
+  <h2>Ajustes</h2>
+  <div class="setting-block">
+    <h3>Idiomas</h3>
+    <div id="languageMenu" class="language-popup-menu" style="display:none">
+      <button onclick="changeLanguage('es')">ES</button>
+      <button onclick="changeLanguage('en')">EN</button>
+      <button onclick="changeLanguage('fr')">FR</button>
+      <button onclick="changeLanguage('it')">IT</button>
     </div>
+  </div>
+  <div class="setting-block">
+    <h3>Modo</h3>
+    <button id="darkModeBtn" class="dark-mode-button" title="Use Dark Mode">
+      <img id="darkModeIcon" src="/assets/moon-icon.webp" alt="Dark mode icon" height="24">
+    </button>
+  </div>
+</aside>
 
-    <!-- ============ SCRIPTS ============ -->
-    <script>
-        (function(){
-            // ---------- Helpers ----------
-            function qs(sel){ return document.querySelector(sel); }
-            function qsa(sel){ return Array.from(document.querySelectorAll(sel)); }
+<div id="contentOverlay"></div>
 
-            // ---------- Toggle Paneles (hamburger) ----------
-            const menuToggle = document.getElementById('menuToggle');
-            const pageOverlay = document.getElementById('pageOverlay');
-
-            function openPanels() {
-                document.body.classList.add('panels-open');
-                menuToggle.classList.add('open');
-                menuToggle.setAttribute('aria-expanded', 'true');
-                pageOverlay.setAttribute('aria-hidden', 'false');
-                pageOverlay.style.display = 'block';
-            }
-            function closePanels() {
-                document.body.classList.remove('panels-open');
-                menuToggle.classList.remove('open');
-                menuToggle.setAttribute('aria-expanded', 'false');
-                pageOverlay.setAttribute('aria-hidden', 'true');
-                pageOverlay.style.display = 'none';
-            }
-            function togglePanels(){
-                if(document.body.classList.contains('panels-open')) closePanels();
-                else openPanels();
-            }
-
-            menuToggle.addEventListener('click', togglePanels);
-            pageOverlay.addEventListener('click', closePanels);
-            document.addEventListener('keydown', function(e){
-                if(e.key === 'Escape') closePanels();
-            });
-
-            // ---------- Toggle language menu (si sigues usando un popup) ----------
-            window.toggleLanguageMenu = function() {
-                const menu = document.getElementById("languageMenu");
-                if (!menu) return;
-                menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-            }
-
-            window.changeLanguage = function(lang) {
-                const current = window.location.pathname;
-                const parts = current.split("/");
-                parts[1] = lang;
-                window.location.href = parts.join("/");
-            }
-
-            // ---------- Dark mode toggle (y cambiar icono) ----------
-            function setDarkIcon(isDark){
-                const icon = document.getElementById("darkModeIcon");
-                const btn = document.getElementById("darkModeBtn");
-                if(!icon || !btn) return;
-                if(isDark){
-                    icon.src = "/assets/sun-icon.svg";
-                    icon.alt = "Modo claro";
-                    btn.title = "Usar modo claro";
-                } else {
-                    icon.src = "/assets/moon-icon.svg";
-                    icon.alt = "Modo oscuro";
-                    btn.title = "Usar modo oscuro";
-                }
-            }
-
-            window.toggleDarkMode = function(){
-                document.body.classList.toggle("dark-mode");
-                setDarkIcon(document.body.classList.contains("dark-mode"));
-            }
-
-            // inicializar icono según estado
-            document.addEventListener('DOMContentLoaded', function(){
-                setDarkIcon(document.body.classList.contains('dark-mode'));
-            });
-
-        })();
-    </script>
+<script src="/scripts/main.js"></script>
 </body>
 </html>
-

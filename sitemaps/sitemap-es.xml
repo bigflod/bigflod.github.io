@@ -2,7 +2,59 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
+    <loc>https://bigflod.github.io/es/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/busqueda/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/grafos/</loc>
+  </url>
+
+  <url>
     <loc>https://bigflod.github.io/es/algoritmos/grafos/bfs.html</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/iterativos/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/va/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/estructuras-de-datos/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/java/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/java/archivos/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/java/excepciones/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/java/poo/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/conceptos-basicos/</loc>
   </url>
 
 </urlset>
