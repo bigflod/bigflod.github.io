@@ -1,4 +1,3 @@
-
 /* ============================
    ESTILOS GENERALES
 ============================ */
@@ -19,22 +18,13 @@ body.dark-mode {
 /* ============================
    NAVBAR SUPERIOR
 ============================ */
-/*
-.navbar {
-    width: 100%;
-    background: #1f1f1f;
-    padding: 15px;
-    display: flex;
-    gap: 25px;
-    align-items: center;
-}
-*/
+
 .navbar {
     display: flex;
     background: #1f1f1f;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;        /* <--- ESTO ES LO IMPORTANTE */
+    flex-wrap: wrap;        
     width: 100%;
     box-sizing: border-box;
     padding: 10px 20px;
@@ -46,13 +36,47 @@ body.dark-mode {
     font-size: 18px;
 }
 
-.navbar a:hover {
-    text-decoration: underline;
+.navbar a {
+    position: relative;
 }
 
-/* Icono del menú de idiomas */
+.navbar a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background: currentColor;
+    transition: width .3s;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+/* ============================
+   NAV LINKS (nuevo)
+   Separación y orden de enlaces
+============================ */
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;              /* <--- SEPARACIÓN ENTRE ENLACES */
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 1;
+}
+
+/* Evitar que enlaces largos rompan la barra */
+.nav-links a {
+    white-space: nowrap;
+}
+
+/* ============================
+   ICONO IDIOMAS
+============================ */
 .language-menu-icon {
-    margin-left: auto;
     height: 28px;
     cursor: pointer;
     transition: transform 0.2s;
@@ -62,7 +86,6 @@ body.dark-mode {
     transform: scale(1.15);
 }
 
-/* Popup idiomas */
 .language-popup-menu {
     position: absolute;
     background: white;
@@ -112,7 +135,6 @@ body.dark-mode {
     transition: transform 0.3s;
 }
 
-/* Activado */
 body.dark-mode .toggle-switch {
     background: #4caf50;
 }
@@ -146,7 +168,6 @@ body.dark-mode .toggle-switch:before {
     transition: background 0.3s, color 0.3s;
 }
 
-/* Sticky sidebar izquierdo */
 .sidebar-left {
     position: sticky;
     top: 90px;
@@ -178,16 +199,22 @@ h1, h2 {
 ============================ */
 @media (max-width: 900px) {
     .page-layout {
-        grid-template-columns: 1fr; /* Se apila todo */
+        grid-template-columns: 1fr;
     }
 
     .sidebar-left, .sidebar-right {
         position: static;
     }
+
+    /* Evitar saturación en móviles */
+    .nav-links {
+        justify-content: center;
+        gap: 12px;
+    }
 }
 
 /* ============================
-   ESTILOS GENERALES
+   TÍTULO CARPETA
 ============================ */
 .titulo-carpeta {
     font-size: 1.3em;
