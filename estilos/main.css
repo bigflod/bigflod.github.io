@@ -35,7 +35,7 @@ body.dark-mode {
     text-decoration: none;
     font-size: 18px;
 }
-
+/*
 .gradient {
     background: linear-gradient(90deg, #00e5ff, #ff0077, #26ff81);
     background-size: 300%;
@@ -49,8 +49,8 @@ body.dark-mode {
     0% { background-position: 0%; }
     100% { background-position: 100%; }
 }
-
-/* Subrayado moderno al pasar el ratón
+*/
+/* Subrayado moderno al pasar el ratón */
 .navbar a {
     position: relative;
 }
@@ -69,7 +69,7 @@ body.dark-mode {
 .navbar a:hover::after {
     width: 100%;
 }
-*/
+
 
 /* ============================
    NAV LINKS (nuevo)
