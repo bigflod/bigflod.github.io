@@ -7,21 +7,503 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Inicio</title>
-  <link rel="stylesheet" href="/estilos/main.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo Nav Scroll Mejorada</title>
+<style>
+:root {
+    --bg-color: #FAFAFA; /* muy clarito */
+    --text-color: #0A2540;
+    --header-bg: #fff;
+    --header-text: #0A2540;
+    --sidebar-bg: #fff;
+    --content-bg: #fff;
+    --accent-color: #1E90FF;
+
+    --topHeader-h: 9vh;
+    --subHeader-h: 5vh;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* =========================
+   TOP HEADER
+========================= */
+#topHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--topHeader-h);
+    background: var(--header-bg);
+    color: var(--header-text);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(1rem,2vw,2rem);
+    z-index: 3000; /* SUBIDO para que no baje el brillo */
+    border-bottom: 1px solid #ddd;
+    transition: transform 0.1s linear;
+}
+
+.logo {
+    width: 32px;
+    height: 32px;
+    background: url('/assets/icon-svg') no-repeat center/contain;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+#searchContainerTop {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+#searchContainerTop input {
+    flex:1;
+    padding: 0.4rem 2.5rem 0.4rem 0.8rem;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+#searchContainerTop input:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 6px rgba(30,144,255,0.2);
+}
+
+#searchContainerTop .search-icon {
+    position: absolute;
+    right: 0.8rem;
+    width: 20px;
+    height: 20px;
+    background: url('/assets/icono-lupa.svg') no-repeat center/contain;
+    pointer-events: none;
+}
+
+nav.top-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem,2vw,2rem);
+}
+
+nav.top-links a {
+    color: var(--header-text);
+    text-decoration: none;
+}
+
+/* =========================
+   SUB HEADER
+========================= */
+#subHeader {
+    position: fixed;
+    top: var(--topHeader-h);
+    left: 0;
+    right: 0;
+    height: var(--subHeader-h);
+    background: var(--header-bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(1rem,2vw,2rem);
+    z-index: 1500;
+    border-bottom: 1px solid #ddd;
+    transition: transform 0.1s linear;
+}
+
+.sub-links {
+    display: flex;
+    gap: clamp(1rem,2vw,2rem);
+}
+
+.sub-links a {
+    color: var(--header-text);
+    text-decoration: none;
+    font-size: clamp(0.85rem,1vw,1rem);
+}
+
+#searchIconSub {
+    display: none;
+    width: 24px;
+    height: 24px;
+    background: url('/assets/icono-lupa.svg') no-repeat center/contain;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+#searchContainerSub {
+    display: none;
+    flex:1;
+    margin-left: 1rem;
+    position: relative;
+}
+
+#searchContainerSub input {
+    width: 100%;
+    padding: 0.4rem 2.5rem 0.4rem 0.8rem;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 0.9rem;
+}
+
+#searchContainerSub input:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 6px rgba(30,144,255,0.2);
+}
+
+#searchContainerSub .search-icon {
+    position: absolute;
+    right: 0.8rem;
+    width: 20px;
+    height: 20px;
+    background: url('/assets/icono-lupa.svg') no-repeat center/contain;
+    pointer-events: none;
+}
+
+#searchContainerSub .closeBtn {
+    position: absolute;
+    right: 2.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+}
+
+/* =========================
+   HAMBURGUESA
+========================= */
+.hamburger {
+    width: 26px;
+    height: 26px;
+    position: relative;
+    cursor: pointer;
+}
+
+.hamburger span,
+.hamburger span::before,
+.hamburger span::after {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: var(--header-text);
+    left:0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.hamburger span { top:50%; transform:translateY(-50%);}
+.hamburger span::before{content:""; top:-8px;}
+.hamburger span::after{content:""; bottom:-8px;}
+.hamburger.open span{background:transparent;}
+.hamburger.open span::before{transform:rotate(45deg); top:0;}
+.hamburger.open span::after{transform:rotate(-45deg); bottom:0;}
+
+/* =========================
+   MENÚ LATERAL
+========================= */
+.side-menu {
+    position: fixed;
+    top: var(--topHeader-h);
+    left: 0;
+    width: min(70vw,250px);
+    height: calc(100vh - var(--topHeader-h));
+    background: var(--sidebar-bg);
+    padding: 2rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 2500;
+}
+
+.side-menu.open { transform: translateX(0); }
+
+.side-menu a {display:block; padding:1rem 0; text-decoration:none; color: var(--text-color);}
+
+/* =========================
+   OVERLAY (MODIFICADO)
+========================= */
+#overlay {
+    position: fixed;
+    top: var(--topHeader-h); /* NO cubre la nav superior */
+    left:0;
+    right:0;
+    bottom:0;
+    background: rgba(0,0,0,0.4);
+    display:none;
+    z-index:2400;
+}
+#overlay.show{display:block;}
+
+/* =========================
+   LAYOUT PRINCIPAL
+========================= */
+.layout-container {
+    margin-top: calc(var(--topHeader-h) + var(--subHeader-h) + 2vh);
+    padding: clamp(1rem,3vw,3rem);
+    display: grid;
+    gap: clamp(1rem,2vw,2rem);
+    grid-template-columns: 220px 1fr;
+}
+
+/* =========================
+   SIDEBAR (índice)
+========================= */
+.sidebar {
+    background: var(--sidebar-bg);
+    padding: clamp(1rem,2vw,2rem);
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    height: max-content;
+    position: sticky;
+    top: calc(var(--subHeader-h) + 2vh);
+}
+
+.sidebar a {text-decoration:none; display:block; color: var(--text-color); margin:0.4rem 0;}
+
+/* =========================
+   CONTENIDO
+========================= */
+.content {
+    background: var(--content-bg);
+    padding: clamp(1rem,3vw,3rem);
+    border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    background: var(--header-bg);
+    color: var(--header-text);
+    text-align:center;
+    padding:2rem;
+    margin-top:4rem;
+}
+
+/* =========================
+   AJUSTES (copiados de página 1)
+========================= */
+.settings-container{
+    position:fixed; bottom:2rem; right:2rem; z-index:3000;
+    display:none; /* OCULTO por defecto */
+}
+.settings-container.visible{
+    display:block; /* visible solo si el side panel está abierto */
+}
+.settings-btn{
+    width:50px;height:50px;
+    background: var(--header-bg);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition: transform 0.3s, background 0.3s;
+}
+.settings-btn:hover{
+    background:var(--accent-color);
+    transform: rotate(20deg);
+}
+.settings-btn img{
+    width:24px;height:24px;
+}
+.settings-menu{
+    position:absolute;
+    bottom:60px;
+    right:0;
+    background: var(--sidebar-bg);
+    border-radius:20px 20px 0 0;
+    padding:1rem;
+    display:none;
+    flex-direction:column;
+    min-width:180px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.2);
+}
+.settings-menu button{
+    background:none;
+    border:none;
+    padding:0.6rem;
+    display:flex;
+    align-items:center;
+    cursor:pointer;
+    font-size:0.95rem;
+    border-radius:8px;
+    color: var(--text-color);
+}
+.settings-menu button:hover{
+    background:rgba(0,0,0,0.05);
+}
+.settings-menu button img{
+    width:20px;
+    margin-right:0.5rem;
+}
+</style>
 </head>
 <body>
-  <nav class="navbar">
-    <a href="/es/index.html">Inicio</a>
-    <a href="/es/algoritmos/index.html">Algoritmos</a>
-    <a href="/es/estructuras-de-datos/index.html">Estructuras de Datos</a>
-  </nav>
 
-  <main>
-    <h1>Bienvenido</h1>
-    <p>Esta es la página ´ñk´ñsdksdñkv principal del sitio en español.</p>
-  </main>
-<script src="/scripts/main.js"></script>
+<div id="overlay"></div>
+
+<div class="side-menu" id="sideMenu">
+    <h3>Menú</h3>
+    <a href="/">Inicio</a>
+    <a href="/tutoriales/">Tutoriales</a>
+    <a href="/cursos/">Cursos</a>
+    <a href="/blog/">Blog</a>
+</div>
+
+<header id="topHeader">
+    <span class="logo"></span>
+    <div id="searchContainerTop">
+        <input type="text" placeholder="Buscar...">
+        <div class="search-icon"></div>
+    </div>
+    <nav class="top-links">
+        <a href="/">Inicio</a>
+        <a href="/es/index.html">Inicio</a>
+        <a href="/es/algoritmos/index.html">Algoritmos</a>
+        <a href="/es/estructuras-de-datos/index.html">Estructuras de Datos</a>
+        <div class="hamburger" id="hamburger"><span></span></div>
+    </nav>
+</header>
+
+<div id="subHeader">
+    <nav class="sub-links">
+        <a href="#">Docs</a>
+        <a href="#">Ejemplos</a>
+        <a href="#">Conceptos</a>
+        <a href="#">Snippets</a>
+    </nav>
+    <div id="searchContainerSub">
+        <input type="text" placeholder="Buscar...">
+        <div class="search-icon"></div>
+        <div class="closeBtn">×</div>
+    </div>
+</div>
+
+<div class="layout-container">
+    <aside class="sidebar">
+        <h3>Contenido</h3>
+        <a href="#intro">Introducción</a>
+        <a href="#ejemplo1">Ejemplo 1</a>
+        <a href="#ejemplo2">Ejemplo 2</a>
+        <a href="#ejemplo3">Ejemplo 3</a>
+        <a href="#ejemplo4">Ejemplo 4</a>
+    </aside>
+
+    <article class="content">
+        <h1 id="intro">Introducción</h1>
+        <p>Contenido introductorio...</p>
+        <h2 id="ejemplo1">Ejemplo 1</h2><pre>&lt;div&gt;Hola Mundo&lt;/div&gt;</pre>
+        <h2 id="ejemplo2">Ejemplo 2</h2><pre>&lt;div&gt;Más contenido...&lt;/div&gt;</pre>
+        <h2 id="ejemplo3">Ejemplo 3</h2><pre>Otro bloque...</pre>
+        <h2 id="ejemplo4">Ejemplo 4</h2><pre>Etc...</pre>
+    </article>
+</div>
+
+<footer>
+© 2025 BIG_FLOD — Todos los derechos reservados.
+</footer>
+
+<!-- Ajustes -->
+<div class="settings-container" id="settingsContainer">
+    <div class="settings-btn" id="settingsBtn">
+        <img src="/assets/settings-icon.svg">
+    </div>
+    <div class="settings-menu" id="settingsMenu">
+        <button id="languageBtn"><img src="/assets/language-icon.svg"> Cambiar Idioma</button>
+        <button id="themeBtn"><img id="themeIcon" src="/assets/moon-icon.svg"> Cambiar a Modo Oscuro</button>
+    </div>
+</div>
+
+<script>
+// Hamburguesa
+const hamburger = document.getElementById("hamburger");
+const sideMenu = document.getElementById("sideMenu");
+const overlay = document.getElementById("overlay");
+const settingsContainer = document.getElementById("settingsContainer");
+
+hamburger.onclick = () => {
+    hamburger.classList.toggle("open");
+    sideMenu.classList.toggle("open");
+    overlay.classList.toggle("show");
+
+    // Mostrar / ocultar ajustes
+    if (sideMenu.classList.contains("open")) {
+        settingsContainer.classList.add("visible");
+    } else {
+        settingsContainer.classList.remove("visible");
+    }
+};
+
+overlay.onclick = () => {
+    hamburger.classList.remove("open");
+    sideMenu.classList.remove("open");
+    overlay.classList.remove("show");
+    settingsContainer.classList.remove("visible");
+};
+
+// Scroll sincronizado
+const topHeader = document.getElementById("topHeader");
+const subHeader = document.getElementById("subHeader");
+const topHeaderH = topHeader.offsetHeight;
+
+const searchContainerSub = document.getElementById("searchContainerSub");
+const searchCloseBtn = searchContainerSub.querySelector(".closeBtn");
+
+window.addEventListener("scroll",()=>{
+    const scrollY = window.scrollY;
+    const topTranslate = Math.min(scrollY, topHeaderH);
+    topHeader.style.transform = `translateY(-${topTranslate}px)`;
+    subHeader.style.transform = `translateY(-${topTranslate}px)`;
+
+    if(topTranslate>=topHeaderH){
+        searchContainerSub.style.display="flex";
+    }else{
+        searchContainerSub.style.display="none";
+    }
+});
+
+searchCloseBtn.onclick = ()=>{
+    searchContainerSub.style.display="none";
+};
+
+// Ajustes
+const settingsBtn = document.getElementById("settingsBtn");
+const settingsMenu = document.getElementById("settingsMenu");
+
+settingsBtn.onclick = ()=>{
+    const isOpen = settingsMenu.style.display==="flex";
+    settingsMenu.style.display = isOpen?"none":"flex";
+    settingsBtn.style.transform = isOpen?"rotate(0deg)":"rotate(360deg)";
+};
+
+// Modo oscuro
+const themeBtn = document.getElementById("themeBtn");
+const themeIcon = document.getElementById("themeIcon");
+
+themeBtn.onclick = ()=>{
+    const dark = document.body.classList.toggle("dark");
+    if(dark){
+        themeIcon.src="/assets/sun-icon.svg";
+        themeBtn.textContent=" Cambiar a Modo Claro";
+        themeBtn.prepend(themeIcon);
+    } else {
+        themeIcon.src="/assets/moon-icon.svg";
+        themeBtn.textContent=" Cambiar a Modo Oscuro";
+        themeBtn.prepend(themeIcon);
+    }
+};
+</script>
 </body>
 </html>
+
