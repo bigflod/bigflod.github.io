@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Variables en Python",
+    "keywords": "python, variables, programación",
+    "summary": "Aprende a declarar y usar variables en Python, incluyendo tipos de datos y buenas prácticas.",
+    "url": "/python/variables"
+  },
+  {
+    "title": "Funciones en JavaScript",
+    "keywords": "javascript, funciones, programación",
+    "summary": "Cómo definir y utilizar funciones en JavaScript, incluyendo funciones flecha y parámetros.",
+    "url": "/javascript/funciones"
+  },
+  {
+    "title": "Bucles en Python",
+    "keywords": "python, bucles, loops, programación",
+    "summary": "Aprende a usar bucles for y while en Python de manera eficiente.",
+    "url": "/python/bucles"
+  }
+]

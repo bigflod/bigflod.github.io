@@ -1,0 +1,644 @@
+
+
+:root {
+    /* Light palette: greys + single accent */
+    --bg-color: #FFFFFF;
+    --surface: #F7F7F8; /* panels/cards */
+    --muted: #E6E9EE; /* borders / dividers */
+    --text-color: #1F2937;
+    --subtext: #475569;
+    --accent-color: #3B82F6; /* single accent color */
+    --accent-light: #60A5FA;
+
+    --header-bg: var(--bg-color);
+    --header-text: var(--text-color);
+    --sidebar-bg: var(--surface);
+    --content-bg: var(--bg-color);
+
+    --topHeader-h: 7.5vh;
+    --subHeader-h: 5vh;
+
+    --shadow-color: rgba(0,0,0,0.06);
+    /* global search accent (editable here) */
+    --search-accent: var(--accent-color);
+}
+
+body {
+    margin: 0;
+    font-family: Inter, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+
+/* theme.css */
+body.dark {
+    /* Dark palette: greys + same accent */
+    --bg-color: #0F172A;
+    --surface: #111827;
+    --muted: #1F2937;
+    --text-color: #E6EEF8;
+    --subtext: #94A3B8;
+    --accent-color: #3B82F6;
+    --accent-light: #60A5FA;
+
+    --header-bg: var(--surface);
+    --header-text: var(--text-color);
+    --sidebar-bg: #0B1220;
+    --content-bg: var(--surface);
+
+    --shadow-color: rgba(0,0,0,0.6);
+}
+
+
+/* header.css */
+/* TOP HEADER */
+#topHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--topHeader-h);
+    background: var(--header-bg);
+    color: var(--header-text);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(1rem,2vw,2rem);
+    z-index: 3000;
+    border-bottom: 1px solid var(--muted);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+    transition: transform 0.1s linear, background 0.3s;
+}
+
+.logo {
+    width: 32px;
+    height: 32px;
+    background: url('../assets/icon-svg') no-repeat center/contain;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+/* Búsqueda */
+#searchContainerTop {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    position: relative; /* for absolute search icon inside */
+}
+
+
+/* single logo (no light/dark variants) */
+#searchContainerTop .search-logo-top { display:flex; align-items:center; margin-right:0.8rem; }
+#searchContainerTop .site-logo { width:34px; height:34px; display:block; }
+
+#searchContainerTop .site-logo { transition: filter .12s ease, transform .12s ease; }
+#searchContainerTop .site-logo:hover { filter: brightness(1.08); transform: scale(1.03); }
+
+#searchContainerTop input {
+    flex: 0 0 220px;
+    /* leave room on the right for the theme button + search icon */
+    padding: 0.45rem calc(1rem + 36px) 0.45rem 1rem;
+    border-radius: 28px; /* match bottom style but larger */
+    border: 2px solid var(--search-accent);
+    font-size: 1rem;
+    background: transparent;
+    transition: box-shadow .18s ease, border-color .12s ease, width .18s ease;
+    box-shadow: 0 6px 18px rgba(59,130,246,0.06);
+    color: var(--text-color);
+    caret-color: var(--text-color);
+}
+
+#searchContainerTop input:focus { outline:none; box-shadow: 0 6px 18px rgba(59,130,246,0.12); }
+
+#searchContainerTop .logo-top-light { display:block; }
+body.dark #searchContainerTop .logo-top-light { display:none; }
+body.dark #searchContainerTop .logo-top-dark { display:block; }
+
+#searchContainerTop .search-icon {
+    position: absolute;
+    right: .8rem;
+    width: 18px;
+    height: 18px;
+    background:url('../assets/icono-lupa.svg') no-repeat center/contain;
+}
+
+/* Theme button placed immediately to the right of the top search input */
+.theme-btn-top {
+    position: absolute;
+    right: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 4px;
+    cursor: pointer;
+}
+.theme-btn-top img { width:20px; height:20px; display:block; }
+
+/* Hamburger: ensure pseudo elements are constrained to the hamburger container */
+/*
+.hamburger { position: relative; width:36px; height:24px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; margin-left:12px; }
+.hamburger span,
+.hamburger span::before,
+.hamburger span::after {
+    position:absolute;
+    width:20px;
+    height:3px;
+    background:var(--header-text);
+    border-radius:2px;
+    transition:all .28s cubic-bezier(.2,.9,.3,1);
+    left:50%; transform:translateX(-50%);
+}
+
+.hamburger span { top:50%; transform:translate(-50%,-50%); }
+.hamburger span::before { content:""; top:-8px; }
+.hamburger span::after { content:""; bottom:-8px; }
+
+.hamburger.open span { background:transparent; }
+.hamburger.open span::before { transform:translateX(-50%) rotate(45deg); top:50%; }
+.hamburger.open span::after { transform:translateX(-50%) rotate(-45deg); bottom:50%; }
+*/
+
+/* LINKS */
+nav.top-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem,2vw,2rem);
+}
+
+nav.top-links a {
+    color: var(--header-text);
+    text-decoration: none;
+    font-size: 1.05rem;
+    position: relative;
+}
+
+/* Top nav: richer hover animation (glow + slight lift + gradient accent) */
+nav.top-links a {
+    --hover-accent: linear-gradient(90deg, var(--accent-color), var(--accent-highlight));
+}
+
+nav.top-links a::before {
+    content:'';
+    position:absolute;
+    left:0; right:0; bottom:-6px;
+    height:3px;
+    border-radius:3px;
+    background:transparent;
+    transform:scaleX(0);
+    transform-origin:left center;
+    transition:transform .28s cubic-bezier(.2,.9,.3,1), opacity .2s;
+    opacity:0.9;
+}
+
+/* Per-letter char animation */
+.top-links a .char { display:inline-block; }
+.top-links a:hover .char { transform: translateY(-8px); color: var(--accent-color); }
+
+/* SUB HEADER */
+#subHeader {
+    position: fixed;
+    top: var(--topHeader-h);
+    left: 0;
+    right: 0;
+    height: var(--subHeader-h);
+    background: var(--header-bg);
+    display: flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 clamp(1rem,2vw,2rem);
+    border-bottom:1px solid #ddd;
+    /* keep header above overlay but below top header */
+    z-index: 2900;
+    transition: transform 0.1s linear, background 0.3s;
+}
+
+/* ensure subHeader is the positioning context for absolutely positioned children */
+.sub-links { display:flex; gap:clamp(1rem,2vw,2rem); }
+
+/* Center sub-links and place search to the right */
+/* Sub-links: use the previous underline animation */
+
+/* Keep the sub-links visually centered independent of the search width by absolutely
+    centering the link group. This prevents the search input from shifting the middle items. */
+/* Center sub-links exactly in the middle of the subHeader to avoid collisions
+   with breadcrumbs or the right-side search. Position absolutely and center. */
+.sub-links {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: clamp(0.6rem,1.4vw,1.2rem);
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    white-space: nowrap;
+    z-index: 2910; /* above overlay but below top header */
+}
+
+.sub-links a { position:relative; color:var(--header-text); text-decoration:none; padding:0.2rem 0.25rem; }
+.sub-links a::after { content:""; position:absolute; bottom:-3px; left:0; width:0%; height:2px; background:var(--accent-color); transition:width .25s ease; }
+.sub-links a:hover::after { width:100%; }
+
+/* Position the search container absolutely on the right so it doesn't affect centering */
+#searchContainerSub {
+    display:none; /* JS will add classes when needed */
+    align-items:center;
+    position:absolute;
+    /* place the search container at the far right of the subheader */
+    right: clamp(1rem,2vw,2rem);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index:1520;
+}
+
+
+/* Collapsible search in sub header: show a small lupa icon when collapsed,
+   expand to an input when user clicks it. JS toggles `.collapsed` / `.expanded`. */
+#searchContainerSub input {
+    width:0;
+    padding:0.45rem 0.8rem;
+    border-radius:50px;
+    border:2px solid var(--search-accent);
+    transition: width .28s ease, opacity .2s ease, padding .28s ease, box-shadow .18s ease;
+    opacity:0;
+    color: var(--text-color);
+    caret-color: var(--text-color);
+}
+
+
+/* place the icon at the same absolute coordinates as the close button so open/close
+   use the same hit area. */
+#searchContainerSub .search-icon {
+    width:20px;
+    height:20px;
+    position:absolute;
+    /* move slightly more to the right to align roughly with top hamburger X position */
+    right: .3rem;
+    top:50%;
+    transform:translateY(-50%);
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:contain;
+    background-image: url('../assets/lupa-icon-modo-claro.svg');
+    cursor:pointer;
+    transition: transform .28s cubic-bezier(.2,.9,.3,1);
+    z-index:1530;
+}
+
+/* dark mode lupa */
+body.dark #searchContainerSub .search-icon { background-image: url('../assets/lupa-icon-modo-oscuro.svg'); }
+
+#searchContainerSub .closeBtn {
+    display:none;
+    cursor:pointer;
+    font-weight:bold;
+    position:absolute;
+    right: .8rem; /* same position as the lupa */
+    top:50%;
+    transform:translateY(-50%);
+    background:transparent;
+    border:none;
+    font-size:1.1rem;
+    z-index:1535;
+}
+
+/* collapsed: only show the icon */
+#searchContainerSub.collapsed { display:flex; }
+/* expanded: animate input width and show close button; place icon at left */
+#searchContainerSub.expanded { display:flex; }
+/* when expanded, animate the lupa moving left while keeping it visible during transition */
+#searchContainerSub.expanded .search-icon {
+    /* translate the lupa left but by a reduced amount so it remains close to the input */
+    right: 1.4rem;
+    transform: translate(-245px, -50%);
+}
+
+/* background rectangles removed per request */
+#searchContainerSub.expanded input { order:1; width:200px; opacity:1; padding:0.35rem 0.9rem 0.35rem 0.9rem; box-shadow: 0 6px 18px rgba(59,130,246,0.12); border:2px solid var(--search-accent); padding-right:2.6rem; background: transparent; }
+#searchContainerSub.expanded .closeBtn { display:block; }
+
+/* Always show highlighted border when expanded (even when not focused) */
+#searchContainerSub.expanded input { outline: none; }
+#searchContainerSub.expanded input:focus { box-shadow: 0 8px 20px rgba(59,130,246,0.16); }
+
+/* rotating animation for lupa when opening/closing */
+/* Instead of rotating, smoothly translate the lupa when expanding/collapsing */
+#searchContainerSub .search-icon { transition: transform .28s cubic-bezier(.2,.9,.3,1); }
+
+/* site logo inside sub search */
+.search-logo { display:none; align-items:center; justify-content:center; position:relative; }
+.search-logo img { width:28px; height:28px; display:block; }
+.search-logo .logo-dark { display:none; }
+.search-logo .logo-light { display:block; }
+.search-logo::after { content:""; position:absolute; inset:0; border-radius:6px; pointer-events:none; opacity:0; transition:opacity .22s ease; mix-blend-mode:screen; }
+
+/* show logo when expanded */
+#searchContainerSub.expanded .search-logo { display:flex; margin-right:0.6rem; order:-1; }
+#searchContainerSub.expanded .search-logo::after { opacity:1; background: linear-gradient(90deg, var(--accent-light), var(--accent-color)); }
+
+/* show dark / light logo depending on mode */
+body.dark .search-logo .logo-dark { display:block; }
+body.dark .search-logo .logo-light { display:none; }
+
+.settings-menu button { position:relative; }
+.settings-menu button::after {
+    content: attr(data-tooltip);
+    position:absolute;
+    right:110%;
+    white-space:nowrap;
+    background:rgba(0,0,0,0.85);
+    color:#fff;
+    padding:.4rem .6rem;
+    border-radius:6px;
+    font-size:0.85rem;
+    opacity:0; transform:translateY(-4px);
+    transition:opacity .15s ease, transform .12s ease;
+    pointer-events:none;
+}
+.settings-menu button:hover::after { opacity:1; transform:translateY(0); }
+
+/* Hamburger: compact 3-line icon using one span + pseudo-elements */
+.hamburger {
+    width: 26px;
+    height: 26px;
+    position: relative;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.hamburger span,
+.hamburger span::before,
+.hamburger span::after {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: var(--header-text);
+    left: 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.hamburger span { top:50%; transform:translateY(-50%); }
+.hamburger span::before{ content: ""; top:-8px; }
+.hamburger span::after{ content: ""; bottom:-8px; }
+.hamburger.open span{ background:transparent; }
+.hamburger.open span::before{ transform:rotate(45deg); top:0; }
+.hamburger.open span::after{ transform:rotate(-45deg); bottom:0; }
+
+/* Hide legacy helper .hamburger-icon to avoid conflicts */
+.hamburger-icon { display:none; }
+
+
+
+
+/* layout.css */
+.layout-container {
+    margin-top: calc(var(--topHeader-h) + var(--subHeader-h) + 2vh);
+    padding: clamp(1rem,3vw,3rem);
+    display: grid;
+    gap: clamp(1rem,2vw,2rem);
+    grid-template-columns: 220px 1fr;
+}
+
+/* Subheader left breadcrumb placeholder */
+.sub-left { display:flex; align-items:center; margin-right:1rem; }
+.sub-crumbs { font-weight:700; display:flex; gap:0.4rem; align-items:center; }
+.sub-crumbs .crumb { color:var(--header-text); text-decoration:none; cursor:pointer; }
+.sub-crumbs .sep { color:var(--subtext); }
+.sub-crumbs .crumb { position:relative; }
+.sub-crumbs .crumb::after { content: ''; position:absolute; left:0; right:0; height:4px; bottom:-6px; background:var(--accent-color); border-radius:4px; opacity:0; transition:opacity .18s, transform .18s; transform: translateY(2px); }
+.sub-crumbs .crumb:hover::after { opacity:1; transform: translateY(0); }
+body.dark .sub-crumbs .crumb { color:#fff; }
+
+/* Subheader hamburger (appears to the right of search when collapsed) */
+.sub-hamburger { display:none; position:relative; width:30px; height:20px; align-items:center; justify-content:center; margin-left:8px; cursor:pointer; }
+.sub-hamburger { display:none; position:relative; width:34px; height:22px; align-items:center; justify-content:center; margin-left:14px; cursor:pointer; }
+.sub-hamburger span, .sub-hamburger span::before, .sub-hamburger span::after { position:absolute; width:20px; height:2px; background:var(--header-text); border-radius:2px; left:50%; transform:translateX(-50%); }
+.sub-hamburger span { top:50%; transform:translate(-50%,-50%); }
+.sub-hamburger span::before { content:""; top:-6px; }
+.sub-hamburger span::after { content:""; bottom:-6px; }
+
+/* show sub-hamburger when collapsed icon is visible */
+#searchContainerSub.collapsed ~ .sub-hamburger { display:inline-flex; }
+
+.sub-hamburger.open span { background:transparent; }
+.sub-hamburger.open span::before { transform:translateX(-50%) rotate(45deg); top:50%; }
+.sub-hamburger.open span::after { transform:translateX(-50%) rotate(-45deg); bottom:50%; }
+
+/* Ensure headings are visible when linked via anchor (offset for fixed headers) */
+.content h1, .content h2, .content h3, .content h4 {
+    scroll-margin-top: calc(var(--topHeader-h) + var(--subHeader-h) + 1rem);
+}
+
+/* Header extra separator and info */
+.header-extra { background: linear-gradient(90deg, transparent, transparent); padding:0.25rem clamp(1rem,2vw,2rem); color:var(--subtext); font-size:0.95rem; border-bottom:1px solid var(--muted); }
+.header-info { max-width:1200px; margin:0 auto; display:flex; gap:1rem; align-items:center; }
+
+/* Code block styling and copy button */
+.content pre {
+    background: color-mix(in srgb, var(--content-bg) 96%, black 0%);
+    border:1px solid var(--muted);
+    padding:1rem;
+    border-radius:8px;
+    position:relative;
+    overflow:auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+}
+
+.copy-btn {
+    position:absolute; top:8px; right:8px; width:34px; height:34px; border-radius:6px; display:flex; align-items:center; justify-content:center; cursor:pointer; background:var(--content-bg); border:1px solid var(--muted);
+}
+
+.copy-btn img { width:18px; height:18px; }
+
+.copy-feedback { position:absolute; top:8px; right:46px; background:rgba(0,0,0,0.8); color:#fff; padding:6px 8px; border-radius:6px; font-size:0.85rem; opacity:0; transform:translateY(-6px); transition:opacity .18s, transform .18s; pointer-events:none; }
+.copy-feedback.show { opacity:1; transform:translateY(0); }
+
+/* Code block border contrast per theme */
+body.dark .content pre { border: 1px solid #fff; }
+body:not(.dark) .content pre { border: 1px solid #000; }
+
+/* Overlay: cover entire viewport to dim whole page including headers */
+#overlay {
+    position: fixed;
+    top: var(--topHeader-h);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.35);
+    display: none;
+    z-index: 2500; /* below topHeader so header remains undimmed */
+    transition: opacity .18s ease;
+    opacity: 0;
+}
+
+#overlay.show { display: block; opacity: 1; }
+
+/* Menú lateral */
+.side-menu {
+    position: fixed;
+    top: var(--topHeader-h);
+    left: 0;
+    width: min(80vw,320px); /* restore a larger width */
+    height: calc(100vh - var(--topHeader-h));
+    background: var(--sidebar-bg);
+    padding: 2rem;
+    transform: translateX(-100%);
+    transition: transform .36s cubic-bezier(.2,.9,.3,1);
+    /* sit above the overlay but below the top header so headers remain visible */
+    z-index: 2600;
+}
+
+.side-menu { box-sizing: border-box; scrollbar-width: none; }
+.side-menu::-webkit-scrollbar { width: 0; height: 0; }
+/* Keep side-menu scrollable but hide visual scrollbar */
+.side-menu { box-sizing: border-box; scrollbar-width: none; -ms-overflow-style: none; }
+.side-menu::-webkit-scrollbar { width: 0; height: 0; }
+
+.side-menu.open { transform:translateX(0); }
+.side-menu a { display:block; padding:1rem 0; }
+
+
+/* sidebar.css */
+.sidebar {
+    background:var(--sidebar-bg);
+    padding:clamp(1rem,2vw,2rem);
+    border-radius:12px;
+    box-shadow:0 3px 10px var(--shadow-color);
+    height:max-content;
+    position:sticky;
+    top:calc(var(--subHeader-h) + 2vh);
+}
+
+.sidebar a { display:block; margin:.4rem 0; }
+
+
+/* content.css */
+.content {
+    background:var(--content-bg);
+    padding:clamp(1rem,3vw,3rem);
+    border-radius:12px;
+    box-shadow:0 3px 10px var(--shadow-color);
+}
+
+footer {
+    background:var(--header-bg);
+    color:var(--header-text);
+    text-align:center;
+    padding:2rem;
+    margin-top:4rem;
+}
+
+
+/* settings.css */
+/* Settings removed. Theme toggle moved into subHeader as `.theme-btn`. */
+/* Theme toggle in top header: positioned absolutely next to the search input */
+.theme-btn-top {
+    position: absolute;
+    right: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 4px;
+    cursor: pointer;
+}
+.theme-btn-top img { width:20px; height:20px; display:block; }
+
+/* Remove old shift helpers (no longer required) */
+.theme-btn.shift-right-small, .theme-btn.shift-left-big { display:none; }
+
+/* Prevent body from scrolling when side menu is open */
+/* Do NOT change body overflow; keep page scrollbar visible at all times.
+    When side-menu is open we forward wheel/touch/keys to the side menu via JS. */
+
+/* Let side-menu scroll internally */
+.side-menu { overflow: auto; }
+
+/* Responsive: mobile adjustments */
+@media (max-width: 800px) {
+    #searchContainerTop input { flex: 1 1 auto; min-width: 120px; max-width: 60vw; }
+    nav.top-links a { display: none; }
+    .hamburger { display: inline-flex; }
+    .sub-links { display: none; }
+    .layout-container { grid-template-columns: 1fr; }
+    .side-menu { width: min(85vw, 320px); }
+}
+
+/* Style links in sub header and side menu to look nicer */
+nav.sub-links a {
+    padding:0.35rem 0.6rem;
+    border-radius:8px;
+    color:var(--header-text);
+    text-decoration:none;
+    font-weight:600;
+    transition: background .18s ease, color .18s ease, transform .12s ease;
+}
+
+nav.sub-links a:hover {
+    background: linear-gradient(90deg, rgba(0,0,0,0.02), rgba(0,0,0,0.03));
+    color: var(--accent-highlight);
+    transform: translateY(-2px);
+}
+
+.side-menu a, .sidebar a {
+    display:block;
+    padding:0.6rem 0.75rem;
+    border-radius:8px;
+    color:var(--text-color);
+    text-decoration:none;
+    transition: background .18s ease, color .18s ease, padding-left .12s ease;
+}
+
+/* Topic links: visually stronger (bold). Subtopic links keep normal weight. */
+.side-menu a.topic {
+    font-weight: 700;
+}
+
+/* Ensure subtopic links remain readable per theme (black in light, white in dark) */
+.side-menu a.subtopic {
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.side-menu a:hover, .sidebar a:hover {
+    background: rgba(0,0,0,0.04);
+    color: var(--accent-color);
+    padding-left:0.85rem;
+}
+
+/* subtle accent for highlighted links */
+.side-menu a.active, nav.sub-links a.active {
+    background: linear-gradient(90deg, rgba(255,108,255,0.06), rgba(0,223,255,0.04));
+    color: var(--accent-highlight);
+}
+
+/* Search results styling (used by search.html) */
+.search-results { list-style: none; padding: 0; margin: 0; }
+.search-results .result { padding: 12px 14px; border-bottom: 1px solid var(--muted); transition: background .16s ease, border-left .12s ease; }
+.search-results .result a { display: block; text-decoration: none; color: var(--text-color); }
+.search-results .result .summary { color: var(--subtext); font-size: 0.95rem; margin-top: 6px; display:block; }
+.search-results .result:hover { background: color-mix(in srgb, var(--search-accent) 8%, transparent); border-left: 4px solid var(--search-accent); }
+.search-results .no-results { padding: 14px; color: var(--subtext); }
+
+

@@ -1,98 +1,164 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Sitio en construcción</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, follow">
+    <title>Demo Nav Scroll Mejorada</title>
 
-    <!--ANALITICS-->
-    <script data-goatcounter="https://prosflod.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-    
-        <link rel="stylesheet" href="/estilos/main.css">
+    <!-- CSS (combined) -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <!-- ============ NAV SUPERIOR ============ -->
-    <nav class="navbar">
 
-        <a href="/es/" class="logo">
-            <img src="/assets/logo.webp" alt="Logo" height="40">
-        </a>
+<div id="overlay"></div>
 
-        <a href="/es/java/">Java</a>
-        <a href="/es/algoritmos/">Algoritmos</a>
-        <a href="/es/estructuras-de-datos/">Estructuras-de-datos</a>
-        <a href="/es/vhdl/">Vhdl</a>
-        
+<div class="side-menu" id="sideMenu">
+    <h3>Menú</h3>
+    <a href="/es/">Inicio</a>
+    <a href="/tutoriales/">Tutoriales</a>
+    <a href="/cursos/">Cursos</a>
+    <a href="/blog/">Blog</a>
+    <!-- Example topic / subtopic entries -->
+      <!-- TOPIC 1 -->
+  <a href="/algoritmos/" class="topic">Introducción a Algoritmos</a>
+  <a href="/algoritmos/definicion" class="subtopic">Definición</a>
+  <a href="/algoritmos/propiedades" class="subtopic">Propiedades</a>
+  <a href="/algoritmos/ejemplos" class="subtopic">Ejemplos básicos</a>
 
-        <!-- Icono idiomas -->
-        <img src="/assets/language-icon.webp"
-            class="language-menu-icon"
-            onclick="toggleLanguageMenu()">
+  <!-- TOPIC 2 -->
+  <a href="/estructuras-de-datos/" class="topic">Estructuras de Datos</a>
+  <a href="/estructuras-de-datos/arreglos" class="subtopic">Arreglos</a>
+  <a href="/estructuras-de-datos/listas-enlazadas" class="subtopic">Listas Enlazadas</a>
+  <a href="/estructuras-de-datos/pilas-colas" class="subtopic">Pilas y Colas</a>
+  <a href="/estructuras-de-datos/sets" class="subtopic">Conjuntos (Sets)</a>
 
-        <!-- Botón modo noche -->
-        <div class="toggle-container" onclick="toggleDarkMode()">
-            <div class="toggle-switch"></div>
-        </div>
+  <!-- TOPIC 3 -->
+  <a href="/ordenamiento/" class="topic">Algoritmos de Ordenamiento</a>
+  <a href="/ordenamiento/burbuja" class="subtopic">Ordenamiento Burbuja</a>
+  <a href="/ordenamiento/seleccion" class="subtopic">Ordenamiento por Selección</a>
+  <a href="/ordenamiento/insercion" class="subtopic">Ordenamiento por Inserción</a>
+  <a href="/ordenamiento/rapido-quick" class="subtopic">QuickSort</a>
+  <a href="/ordenamiento/merge" class="subtopic">MergeSort</a>
 
-        <!-- Popup idiomas -->
-        <div id="languageMenu" class="language-popup-menu">
-            <button onclick="changeLanguage('es')">ES</button>
-            <button onclick="changeLanguage('en')">EN</button>
-            <button onclick="changeLanguage('fr')">FR</button>
-            <button onclick="changeLanguage('it')">IT</button>
-        </div>
-    </nav>
+  <!-- TOPIC 4 -->
+  <a href="/recursion/" class="topic">Recursión</a>
+  <a href="/recursion/concepto" class="subtopic">Concepto de Recursión</a>
+  <a href="/recursion/caso-base" class="subtopic">Caso Base</a>
+  <a href="/recursion/ejemplos" class="subtopic">Ejemplos Recursivos</a>
 
-    <!-- ============ CONTENEDOR DE 3 COLUMNAS ============ -->
-    <div class="page-layout">
+  <!-- TOPIC 5 -->
+  <a href="/complejidad/" class="topic">Complejidad Algorítmica</a>
+  <a href="/complejidad/tiempo" class="subtopic">Complejidad en Tiempo</a>
+  <a href="/complejidad/espacio" class="subtopic">Complejidad en Espacio</a>
+  <a href="/complejidad/big-o" class="subtopic">Notación Big-O</a>
 
-        <!-- SIDEBAR IZQUIERDA -->
-        <aside class="sidebar-left">
+  <!-- TOPIC 6 -->
+  <a href="/busquedas/" class="topic">Algoritmos de Búsqueda</a>
+  <a href="/busquedas/lineal" class="subtopic">Búsqueda Lineal</a>
+  <a href="/busquedas/binary" class="subtopic">Búsqueda Binaria</a>
+  <a href="/busquedas/hash" class="subtopic">Tablas Hash</a>
 
-            <h3>Navegación</h3>
-            <ul>
-<ul>
-</ul>
+  <!-- TOPIC 7 -->
+  <a href="/grafo/" class="topic">Grafos</a>
+  <a href="/grafo/definicion" class="subtopic">Definición</a>
+  <a href="/grafo/bfs-dfs" class="subtopic">BFS / DFS</a>
+  <a href="/grafo/dijkstra" class="subtopic">Dijkstra</a>
+  <a href="/grafo/kruskal" class="subtopic">Kruskal</a>
 
-            </ul>
+  <!-- TOPIC 8 -->
+  <a href="/programacion-dinamica/" class="topic">Programación Dinámica</a>
+  <a href="/programacion-dinamica/subproblemas" class="subtopic">Subproblemas</a>
+  <a href="/programacion-dinamica/memoization" class="subtopic">Memoización</a>
+  <a href="/programacion-dinamica/tabulacion" class="subtopic">Tabulación</a>
 
-        </aside>
 
-        <!-- CONTENIDO PRINCIPAL -->
-        <main>
-            <img src="/assets/construction-site.webp" width="280">
-            <h2>Estamos trabajando en ello</h2>
-            <p>Esta sección aún no está lista, pero pronto estará disponible.</p>
+</div>
 
-            <a href="/es/" class="back-button">Volver atrás</a>
-        </main>
-
-        <!-- SIDEBAR DERECHA (vacía por ahora) -->
-        <aside class="sidebar-right">
-            <!-- Vacío -->
-        </aside>
-
+<header id="topHeader">
+    <div id="searchContainerTop">
+        <a href="/" class="search-logo-top" aria-label="Inicio"><img src="assets/logo.svg" alt="Logo" class="site-logo"></a>
+        <input class="search-input" type="text" placeholder="Buscar...">
+        <button id="themeBtn" class="theme-btn-top" aria-label="Cambiar tema">
+            <img id="themeIcon" src="assets/moon-icon.svg" alt="Tema">
+        </button>
+        <div class="search-icon"></div>
     </div>
 
-    <script>
-        function toggleLanguageMenu() {
-            const menu = document.getElementById("languageMenu");
-            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-        }
+    <nav class="top-links">
+        <a href="/tutoriales/">Tutoriales</a>
+        <a href="/ejercicios/">Ejercicios</a>
+        <a href="/cursos/">Cursos</a>
 
-        function changeLanguage(lang) {
-            const current = window.location.pathname;
-            const parts = current.split("/");
-            parts[1] = lang;
-            window.location.href = parts.join("/");
-        }
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </nav>
+</header>
 
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark-mode");
-        }
-    </script>
+<div id="subHeader">
+    <div class="sub-left">
+        <nav class="sub-crumbs">
+            <a class="crumb" data-part="Java">Java</a>
+            <span class="sep">&nbsp;&gt;&nbsp;</span>
+            <a class="crumb" data-part="POO">POO</a>
+            <span class="sep">&nbsp;&gt;&nbsp;</span>
+            <a class="crumb" data-part="Herencia">Herencia</a>
+        </nav>
+    </div>
+    <nav class="sub-links">
+        <a href="#">Docs</a>
+        <a href="#">Ejemplos</a>
+        <a href="#">Conceptos</a>
+        <!--Duplicados para probar colisiones-->
+        <a href="#">Docs</a>
+        <a href="#">Ejemplos</a>
+        <a href="#">Conceptos</a>
+        
+        
+    </nav>
+    <div id="searchContainerSub" aria-hidden="true">
+        <div class="search-icon" role="button" tabindex="0" aria-label="Abrir búsqueda"></div>
+        <input class="search-input" type="text" placeholder="Buscar..." aria-label="Buscar">
+        <div class="closeBtn" role="button" tabindex="0" aria-label="Cerrar búsqueda">×</div>
+    </div>
+</div>
+
+    <!-- small header extra (placeholder info) -->
+    <div class="header-extra">
+        <div class="header-info">Usuario: <strong>Invitado</strong> · <span class="notif">0 notificaciones</span></div>
+    </div>
+<div class="layout-container">
+    <aside class="sidebar">
+        <h3>Contenido</h3>
+        <a href="#intro">Introducción</a>
+        <a href="#ejemplo1">Ejemplo 1</a>
+        <a href="#ejemplo2">Ejemplo 2</a>
+        <a href="#ejemplo3">Ejemplo 3</a>
+        <a href="#ejemplo4">Ejemplo 4</a>
+    </aside>
+
+    <article class="content">
+        <h1 id="intro">Introducción</h1>
+        <p>Contenido introductorio...</p>
+        <h2 id="ejemplo1">Ejemplo 1</h2><pre>&lt;div&gt;Hola Mundo&lt;/div&gt;</pre>
+        <h2 id="ejemplo2">Ejemplo 2</h2><pre>&lt;div&gt;Más contenido...&lt;/div&gt;</pre>
+        <h2 id="ejemplo3">Ejemplo 3</h2><pre>Otro bloque...</pre>
+        <h2 id="ejemplo4">Ejemplo 4</h2><pre>Etc...</pre>
+    </article>
+</div>
+
+<footer>
+© 2025 BIG_FLOD — Todos los derechos reservados.
+</footer>
+
+<!-- Settings removed: theme toggle moved to subHeader -->
+
+<!-- JS (combined) -->
+<script src="js/app.js"></script>
 
 </body>
 </html>
