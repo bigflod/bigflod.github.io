@@ -4,48 +4,171 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Resultados de búsqueda</title>
-<link rel="stylesheet" href="css/styles.css">
+
 <script src="https://unpkg.com/lunr/lunr.js"></script>
+
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f7f7f9;
+  --border: #e5e7eb;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #3b82f6;
+  --accent-soft: rgba(59,130,246,.08);
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0,0,0,.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: linear-gradient(180deg, #f8fafc, #ffffff);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* layout */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+h1 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+/* results list */
+.search-results {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+/* result card */
+.result {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.result:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(0,0,0,.1);
+  border-color: var(--accent);
+}
+
+/* clickable block */
+.result a {
+  display: block;
+  padding: 1.2rem 1.4rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* title */
+.result strong {
+  display: block;
+  font-size: 1.05rem;
+  margin-bottom: .4rem;
+  color: var(--accent);
+}
+
+/* summary */
+.summary {
+  display: block;
+  font-size: .95rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* empty / error states */
+.no-results {
+  padding: 2rem;
+  text-align: center;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+/* subtle highlight animation on load */
+.result {
+  animation: fadeUp .35s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* responsive tweaks */
+@media (max-width: 600px) {
+  .result a {
+    padding: 1rem;
+  }
+  .summary {
+    font-size: .9rem;
+  }
+}
+</style>
 </head>
+
 <body>
 
-<h1>Resultados de búsqueda</h1>
-<ul id="results" class="search-results"></ul>
+<main>
+  <h1>Resultados de búsqueda</h1>
+  <ul id="results" class="search-results"></ul>
+</main>
 
 <script>
   // --- Configuración ---
   const PAGES_JSON = '/assets/data/pages.json';
 
-  // stopwords to ignore (Spanish minimal list)
   const STOPWORDS = [
     'a','al','algo','algunas','algunos','ante','antes','como','con','contra','cualquier',
     'de','del','desde','donde','durante','e','el','ella','ellas','ellos','en','entre',
     'era','erais','éramos','es','esa','esas','ese','esos','esta','estaba','estabais','estábamos',
-    'están','están','este','esto','estos','etc','ha','hace','haces','hago','hasta','incluso',
+    'están','este','esto','estos','etc','ha','hace','haces','hago','hasta','incluso',
     'la','las','le','les','lo','los','más','me','mi','mis','muy','ni','no','nos','nosotros','o',
     'por','para','pero','que','qué','quien','si','sí','sin','sobre','su','sus','también','tanto',
     'te','tu','tus','un','una','uno','unos','y','ya'
   ];
 
-  // util: normalize and tokenize string
   function tokenize(text) {
     if (!text) return [];
     return text
       .toString()
       .toLowerCase()
-      .replace(/[\u00A0\u2000-\u206F\s]+/g, ' ') // normalize spaces
-      .replace(/[^a-z0-9áéíóúñç ]+/g, ' ') // remove punctuation
+      .replace(/[\u00A0\u2000-\u206F\s]+/g, ' ')
+      .replace(/[^a-z0-9áéíóúñç ]+/g, ' ')
       .split(/\s+/)
       .map(t => t.trim())
       .filter(Boolean);
   }
 
-  // util: remove stopwords
   function removeStopwords(tokens) {
     return tokens.filter(t => !STOPWORDS.includes(t));
   }
 
-  // read query
   const urlParams = new URLSearchParams(window.location.search);
   const rawQuery = urlParams.get('q') || '';
   const query = rawQuery.trim();
@@ -55,119 +178,75 @@
   if (!query) {
     resultsContainer.innerHTML = '<li class="no-results">Introduce un término de búsqueda</li>';
   } else {
-    // fetch documents, build or reuse index
     fetch(PAGES_JSON)
-      .then(r => {
-        if (!r.ok) throw new Error('No se pudo cargar pages.json');
-        return r.json();
-      })
-      .then(async documents => {
-        // basic caching: reuse serialized index if doc count matches
+      .then(r => r.json())
+      .then(documents => {
         let idx = null;
+
         try {
           const cached = localStorage.getItem('lunr_index_v1');
           const cachedDocsCount = Number(localStorage.getItem('lunr_docs_count_v1') || '0');
           if (cached && cachedDocsCount === documents.length) {
             idx = lunr.Index.load(JSON.parse(cached));
           }
-        } catch (err) {
-          console.warn('Cache load failed', err);
-          idx = null;
-        }
+        } catch {}
 
         if (!idx) {
-          // Build Lunr index using only `keywords` field with high boost
           idx = lunr(function() {
-            // remove default stop word filter and add custom Spanish stopwords
-            try { this.pipeline.remove(lunr.stopWordFilter); } catch (e) { /* ignore */ }
-            try { this.pipeline.add(lunr.generateStopWordFilter(STOPWORDS)); } catch (e) { /* ignore */ }
+            try { this.pipeline.remove(lunr.stopWordFilter); } catch {}
+            try { this.pipeline.add(lunr.generateStopWordFilter(STOPWORDS)); } catch {}
 
             this.ref('url');
             this.field('keywords', { boost: 10 });
 
-            // add documents
             documents.forEach(doc => {
-              // ensure keywords is a string
-              doc.keywords = (doc.keywords || '').toString();
-              this.add({ url: doc.url, keywords: doc.keywords });
+              this.add({
+                url: doc.url,
+                keywords: (doc.keywords || '').toString()
+              });
             });
           });
 
-          // cache serialized index + doc count
           try {
             localStorage.setItem('lunr_index_v1', JSON.stringify(idx));
-            localStorage.setItem('lunr_docs_count_v1', String(documents.length));
-          } catch (err) {
-            // ignore storage errors for privacy or quota
-          }
+            localStorage.setItem('lunr_docs_count_v1', documents.length);
+          } catch {}
         }
 
-        // perform search: allow multiple words
-        const rawTokens = removeStopwords(tokenize(query));
-        if (rawTokens.length === 0) {
+        const tokens = removeStopwords(tokenize(query));
+        if (!tokens.length) {
           resultsContainer.innerHTML = '<li class="no-results">La búsqueda contiene solo palabras vacías.</li>';
           return;
         }
 
-        // Use Lunr search for relevance scores, but we'll re-rank by number of matching keyword tokens
-        // Build a simple Lunr query combining terms
-        const lunrQuery = rawTokens.join(' ');
-        let lunrResults = [];
-        try {
-          lunrResults = idx.search(lunrQuery);
-        } catch (err) {
-          console.error('Lunr search failed', err);
-          lunrResults = [];
-        }
+        const results = idx.search(tokens.join(' '));
+        const docsByUrl = Object.fromEntries(documents.map(d => [d.url, d]));
 
-        // Map results to include matchCount (number of matched tokens against doc.keywords)
-        const docsByUrl = {};
-        documents.forEach(d => { docsByUrl[d.url] = d; });
-
-        const scored = lunrResults.map(r => {
-          const doc = docsByUrl[r.ref];
-          const kwTokens = removeStopwords(tokenize(doc.keywords));
-          // count unique token matches
-          const matches = rawTokens.reduce((acc, t) => acc + (kwTokens.includes(t) ? 1 : 0), 0);
-          return { ref: r.ref, score: r.score, matches, doc };
-        });
-
-        // sort by matches desc, then lunr score desc
-        scored.sort((a,b) => {
-          if (b.matches !== a.matches) return b.matches - a.matches;
-          return b.score - a.score;
-        });
-
-        // render results
-        if (scored.length === 0) {
+        if (!results.length) {
           resultsContainer.innerHTML = '<li class="no-results">No se encontraron resultados</li>';
-        } else {
-          const frag = document.createDocumentFragment();
-          scored.forEach(item => {
-            const d = item.doc;
-            const li = document.createElement('li');
-            li.className = 'result';
-            // accessible clickable block
-            const a = document.createElement('a');
-            a.href = d.url;
-            a.innerHTML = `<strong>${escapeHtml(d.title || d.url)}</strong>`;
-            const sum = document.createElement('span');
-            sum.className = 'summary';
-            sum.textContent = d.summary || '';
-            a.appendChild(sum);
-            li.appendChild(a);
-            frag.appendChild(li);
-          });
-          resultsContainer.appendChild(frag);
+          return;
         }
+
+        const frag = document.createDocumentFragment();
+        results.forEach(r => {
+          const d = docsByUrl[r.ref];
+          const li = document.createElement('li');
+          li.className = 'result';
+          li.innerHTML = `
+            <a href="${d.url}">
+              <strong>${escapeHtml(d.title || d.url)}</strong>
+              <span class="summary">${d.summary || ''}</span>
+            </a>`;
+          frag.appendChild(li);
+        });
+
+        resultsContainer.appendChild(frag);
       })
-      .catch(err => {
-        console.error(err);
+      .catch(() => {
         resultsContainer.innerHTML = '<li class="no-results">Error cargando datos de búsqueda.</li>';
       });
   }
 
-  // small helper to avoid injecting HTML from JSON
   function escapeHtml(s) {
     return String(s)
       .replace(/&/g, '&amp;')
@@ -177,5 +256,6 @@
       .replace(/'/g, '&#39;');
   }
 </script>
+
 </body>
 </html>
