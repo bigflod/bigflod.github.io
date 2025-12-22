@@ -153,6 +153,19 @@ if (searchCloseBtn) {
 const themeBtn = document.getElementById("themeBtn");
 const themeIcon = document.getElementById("themeIcon");
 
+// Persisted theme preference key (shared with search.html)
+const THEME_KEY = 'theme_pref_v1';
+
+// Apply saved preference on load (default to light)
+try {
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark');
+    } else if (savedTheme === 'light') {
+        document.body.classList.remove('dark');
+    }
+} catch (e) { /* ignore localStorage errors */ }
+
 // Initialize theme icon based on current state
 if (themeIcon) {
     if (document.body.classList.contains('dark')) {
@@ -174,6 +187,8 @@ if (themeBtn) {
             themeIcon.src = 'assets/moon-icon.svg';
             themeBtn.setAttribute('data-tooltip', 'Cambiar a Modo Oscuro');
         }
+
+        try { localStorage.setItem(THEME_KEY, dark ? 'dark' : 'light'); } catch (e) {}
 
         // close side menu / overlay when toggling theme for a clean state
         hamburger.classList.remove('open');

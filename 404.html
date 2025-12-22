@@ -5,13 +5,26 @@
 <meta charset="UTF-8">
 <title>Página no encontrada</title>
 <script>
-  // Detectar si el usuario prefiere modo oscuro
-  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
-  // Redirigir a la versión correcta
-  if(prefersDark) {
-    window.location.href = '/404-dark.html';
-  } else {
+  const THEME_KEY = 'theme_pref_v1';
+
+  try {
+    // 1️⃣ Revisar si el usuario ya guardó un tema
+    const savedTheme = localStorage.getItem(THEME_KEY);
+    if (savedTheme === 'dark') {
+      window.location.href = '/404-dark.html';
+    } else if (savedTheme === 'light') {
+      window.location.href = '/404-light.html';
+    } else {
+      // 2️⃣ Si no hay preferencia, usar la preferencia del sistema
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (prefersDark) {
+        window.location.href = '/404-dark.html';
+      } else {
+        window.location.href = '/404-light.html';
+      }
+    }
+  } catch(e) {
+    // Si hay algún error, redirigir a la versión clara por defecto
     window.location.href = '/404-light.html';
   }
 </script>
@@ -20,3 +33,4 @@
 <p>Redirigiendo...</p>
 </body>
 </html>
+
