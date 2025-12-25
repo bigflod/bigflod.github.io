@@ -10,7 +10,187 @@
   </url>
 
   <url>
+    <loc>https://bigflod.github.io/es/algoritmos/algoritmos-voraces/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/algoritmos-voraces/condiciones-de-optimalidad/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/algoritmos-voraces/huffman/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/algoritmos-voraces/kruskal/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/algoritmos-voraces/matroides/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/algoritmos-voraces/prim/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/algoritmos-voraces/scheduling/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/analisis-de-algoritmos/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/analisis-de-algoritmos/analisis-amortizado/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/analisis-de-algoritmos/complejidad-espacial/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/analisis-de-algoritmos/complejidad-temporal/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/analisis-de-algoritmos/notacion-big-o/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/analisis-de-algoritmos/recurrencias/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/analisis-de-algoritmos/teorema-maestro/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/backtracking/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/backtracking/arbol-de-busqueda/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/backtracking/branch-and-bound/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/backtracking/n-reinas/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/backtracking/permutaciones/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/backtracking/poda/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/backtracking/sat/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/backtracking/subconjuntos/</loc>
+  </url>
+
+  <url>
     <loc>https://bigflod.github.io/es/algoritmos/busqueda/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/busqueda/busqueda-binaria/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/busqueda/busqueda-en-grafos/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/busqueda/busqueda-en-grafos/bfs/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/busqueda/busqueda-en-grafos/dfs/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/busqueda/busqueda-en-grafos/iterative-deepening/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/busqueda/busqueda-heuristica/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/busqueda/busqueda-heuristica/a-estrella/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/busqueda/busqueda-heuristica/greedy-best-first/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/busqueda/busqueda-lineal/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/complejidad-computacional/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/complejidad-computacional/algoritmos-aleatorizados/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/complejidad-computacional/algoritmos-de-aproximacion/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/complejidad-computacional/clases-p-np/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/complejidad-computacional/np-completitud/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/complejidad-computacional/problemas-intratables/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/complejidad-computacional/reducciones/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/divide-y-venceras/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/divide-y-venceras/analisis-de-recurrencias/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/divide-y-venceras/closest-pair/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/divide-y-venceras/merge-sort/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/divide-y-venceras/quick-sort/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/divide-y-venceras/selection/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/divide-y-venceras/strassen/</loc>
   </url>
 
   <url>
@@ -18,35 +198,415 @@
   </url>
 
   <url>
-    <loc>https://bigflod.github.io/es/algoritmos/grafos/bfs.html</loc>
+    <loc>https://bigflod.github.io/es/algoritmos/grafos/caminos-minimos/</loc>
   </url>
 
   <url>
-    <loc>https://bigflod.github.io/es/algoritmos/iterativos/</loc>
+    <loc>https://bigflod.github.io/es/algoritmos/grafos/conectividad/</loc>
   </url>
 
   <url>
-    <loc>https://bigflod.github.io/es/algoritmos/va/</loc>
+    <loc>https://bigflod.github.io/es/algoritmos/grafos/emparejamientos/</loc>
   </url>
 
   <url>
-    <loc>https://bigflod.github.io/es/estructuras-de-datos/</loc>
+    <loc>https://bigflod.github.io/es/algoritmos/grafos/flujos/</loc>
   </url>
 
   <url>
-    <loc>https://bigflod.github.io/es/java/</loc>
+    <loc>https://bigflod.github.io/es/algoritmos/grafos/grafos-np-completos/</loc>
   </url>
 
   <url>
-    <loc>https://bigflod.github.io/es/java/archivos/</loc>
+    <loc>https://bigflod.github.io/es/algoritmos/grafos/planaridad/</loc>
   </url>
 
   <url>
-    <loc>https://bigflod.github.io/es/java/excepciones/</loc>
+    <loc>https://bigflod.github.io/es/algoritmos/grafos/representaciones/</loc>
   </url>
 
   <url>
-    <loc>https://bigflod.github.io/es/java/poo/</loc>
+    <loc>https://bigflod.github.io/es/algoritmos/ordenacion/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/ordenacion/algoritmos-elementales/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/ordenacion/counting-sort/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/ordenacion/estabilidad/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/ordenacion/heap-sort/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/ordenacion/limites-inferiores/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/ordenacion/merge-sort/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/ordenacion/quick-sort/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/ordenacion/radix-sort/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/programacion-dinamica/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/programacion-dinamica/bellman-ford/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/programacion-dinamica/floyd-warshall/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/programacion-dinamica/lcs/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/programacion-dinamica/memoizacion/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/programacion-dinamica/mochila/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/programacion-dinamica/subestructura-optima/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/programacion-dinamica/tabulacion/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/recursion/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/recursion/correctitud-por-induccion/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/recursion/eliminacion-de-recursion/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/recursion/pila-de-llamadas/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/recursion/recursion-de-cola/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/algoritmos/recursion/recursion-estructural/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/algebra-lineal/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/algebra-lineal/aplicaciones-computacionales/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/algebra-lineal/autovalores/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/algebra-lineal/bases/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/algebra-lineal/diagonalizacion/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/algebra-lineal/espacios-vectoriales/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/algebra-lineal/transformaciones-lineales/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/calculo/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/calculo/convergencia/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/calculo/derivadas-parciales/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/calculo/funciones-multivariables/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/calculo/gradiente/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/calculo/optimizacion/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/calculo/series/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/matematica-discreta/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/matematica-discreta/arboles/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/matematica-discreta/combinatoria/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/matematica-discreta/grafos/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/matematica-discreta/induccion/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/matematica-discreta/logica-formal/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/matematica-discreta/relaciones/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/matematica-discreta/teoria-de-conjuntos/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/matematica-discreta/teoria-de-numeros/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/probabilidad/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/probabilidad/aplicaciones-algoritmicas/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/probabilidad/distribuciones/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/probabilidad/esperanza/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/probabilidad/procesos-estocasticos/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/probabilidad/variables-aleatorias/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/matematicas/probabilidad/varianza/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/arquitectura-de-computadores/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/arquitectura-de-computadores/isa/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/arquitectura-de-computadores/multicore/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/arquitectura-de-computadores/paralelismo/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/arquitectura-de-computadores/pipeline/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/arquitectura-de-computadores/riesgos/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/arquitectura-de-computadores/simd-mimd/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/circuitos-combinacionales/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/circuitos-combinacionales/alu/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/circuitos-combinacionales/comparadores/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/circuitos-combinacionales/decodificadores/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/circuitos-combinacionales/multiplexores/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/circuitos-combinacionales/sumadores/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/circuitos-secuenciales/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/circuitos-secuenciales/contadores/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/circuitos-secuenciales/flip-flops/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/circuitos-secuenciales/maquinas-de-estados/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/circuitos-secuenciales/metastabilidad/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/circuitos-secuenciales/registros/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/entrada-salida/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/entrada-salida/buses/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/entrada-salida/dispositivos/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/entrada-salida/dma/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/entrada-salida/interrupciones/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/logica-digital/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/logica-digital/algebra-de-boole/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/logica-digital/mapas-de-karnaugh/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/logica-digital/retardos/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/logica-digital/simplificacion-logica/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/memoria/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/memoria/cache/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/memoria/coherencia-de-cache/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/memoria/jerarquia-de-memoria/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/memoria/memoria-virtual/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/memoria/tlb/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/representacion-de-datos/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/representacion-de-datos/codificacion-binaria/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/representacion-de-datos/codificacion-de-caracteres/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/representacion-de-datos/codigos-de-error/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/representacion-de-datos/punto-fijo/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/tecnologia-de-computadores/representacion-de-datos/punto-flotante-ieee-754/</loc>
   </url>
 
   <url>
@@ -54,7 +614,115 @@
   </url>
 
   <url>
-    <loc>https://bigflod.github.io/es/vhdl/conceptos-basicos/</loc>
+    <loc>https://bigflod.github.io/es/vhdl/diseno-combinacional/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/diseno-combinacional/descripcion-rtl/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/diseno-combinacional/inferencia-de-hardware/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/diseno-combinacional/latches-vs-flip-flops/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/diseno-secuencial/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/diseno-secuencial/clock-enable/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/diseno-secuencial/maquinas-de-estados/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/diseno-secuencial/reset/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/diseno-secuencial/sincronizacion/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/implementacion/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/implementacion/fpga/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/implementacion/optimizacion/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/implementacion/sintesis/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/implementacion/timing-analysis/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/modelado-comportamental/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/modelado-comportamental/process/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/modelado-comportamental/sensitivity-list/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/modelado-comportamental/variables-vs-senales/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/modelado-comportamental/wait/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/modelado-estructural/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/modelado-estructural/componentes/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/modelado-estructural/generics/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/modelado-estructural/port-map/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/simulacion-y-verificacion/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/simulacion-y-verificacion/asserts/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/simulacion-y-verificacion/cobertura/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/simulacion-y-verificacion/simulacion-vs-sintesis/</loc>
+  </url>
+
+  <url>
+    <loc>https://bigflod.github.io/es/vhdl/simulacion-y-verificacion/testbench/</loc>
   </url>
 
 </urlset>

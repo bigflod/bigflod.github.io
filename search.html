@@ -132,26 +132,17 @@ h1 {
   }
 }
 
-/* Top header styles (minimal, keep fixed) */
-#topHeader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--topHeader-h);
-  background: linear-gradient(180deg, #ffffff, #fbfdff);
-  display: flex;
-  align-items: center;
-  z-index: 4000;
-  border-bottom: 1px solid var(--border);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.03);
-}
+/* Use shared stylesheet for header + base layout */
+</style>
+<link rel="stylesheet" href="css/styles.css">
+<style>
 
-#searchContainerTop { display:flex; align-items:center; gap:0.6rem; padding:0 1rem; width:100%; }
-#searchContainerTop .site-logo { width:34px; height:34px; display:block; margin-right:0.6rem; }
-#topSearchInput { flex:1 1 auto; max-width:760px; padding:0.5rem 1rem; border-radius:28px; border:2px solid var(--accent); font-size:1rem; background:transparent; color:var(--text); }
+/* Header inner container to align search input with main content */
+.header-inner { max-width: 900px; margin: 0 auto; width: 100%; padding: 0 clamp(1.5rem, 4vw, 3rem); display:flex; align-items:center; }
+#topHeader { position: fixed; top: 0; left: 0; right: 0; z-index: 4000; }
+#searchContainerTop { width:100%; display:flex; align-items:center; gap:0.6rem; }
+#topSearchInput { flex:1; width:100%; padding:0.75rem 1rem; border-radius:28px; border:2px solid var(--search-accent); font-size:1.05rem; background:transparent; }
 #topSearchInput:focus { outline:none; box-shadow: 0 6px 18px rgba(59,130,246,0.08); }
-#themeBtn { width:36px; height:36px; border-radius:50%; background:transparent; border:none; display:flex; align-items:center; justify-content:center; margin-left:0.6rem; cursor:pointer; }
 
 /* push main content down so header doesn't overlap */
 main { padding-top: calc(var(--topHeader-h) + 1rem); }
@@ -160,7 +151,70 @@ main { padding-top: calc(var(--topHeader-h) + 1rem); }
 
 <body>
 
-  <!-- Top header (fixed) copied/adapted from index.html -->
+  <div id="overlay"></div>
+
+  <div class="side-menu" id="sideMenu">
+      <h3>Menú</h3>
+      <a href="/es/">Inicio</a>
+      <a href="/tutoriales/">Tutoriales</a>
+      <a href="/cursos/">Cursos</a>
+      <a href="/blog/">Blog</a>
+      <!-- Example topic / subtopic entries -->
+        <!-- TOPIC 1 -->
+      <a href="/algoritmos/" class="topic">Introducción a Algoritmos</a>
+      <a href="/algoritmos/definicion" class="subtopic">Definición</a>
+      <a href="/algoritmos/propiedades" class="subtopic">Propiedades</a>
+      <a href="/algoritmos/ejemplos" class="subtopic">Ejemplos básicos</a>
+
+      <!-- TOPIC 2 -->
+      <a href="/estructuras-de-datos/" class="topic">Estructuras de Datos</a>
+      <a href="/estructuras-de-datos/arreglos" class="subtopic">Arreglos</a>
+      <a href="/estructuras-de-datos/listas-enlazadas" class="subtopic">Listas Enlazadas</a>
+      <a href="/estructuras-de-datos/pilas-colas" class="subtopic">Pilas y Colas</a>
+      <a href="/estructuras-de-datos/sets" class="subtopic">Conjuntos (Sets)</a>
+
+      <!-- TOPIC 3 -->
+      <a href="/ordenamiento/" class="topic">Algoritmos de Ordenamiento</a>
+      <a href="/ordenamiento/burbuja" class="subtopic">Ordenamiento Burbuja</a>
+      <a href="/ordenamiento/seleccion" class="subtopic">Ordenamiento por Selección</a>
+      <a href="/ordenamiento/insercion" class="subtopic">Ordenamiento por Inserción</a>
+      <a href="/ordenamiento/rapido-quick" class="subtopic">QuickSort</a>
+      <a href="/ordenamiento/merge" class="subtopic">MergeSort</a>
+
+      <!-- TOPIC 4 -->
+      <a href="/recursion/" class="topic">Recursión</a>
+      <a href="/recursion/concepto" class="subtopic">Concepto de Recursión</a>
+      <a href="/recursion/caso-base" class="subtopic">Caso Base</a>
+      <a href="/recursion/ejemplos" class="subtopic">Ejemplos Recursivos</a>
+
+      <!-- TOPIC 5 -->
+      <a href="/complejidad/" class="topic">Complejidad Algorítmica</a>
+      <a href="/complejidad/tiempo" class="subtopic">Complejidad en Tiempo</a>
+      <a href="/complejidad/espacio" class="subtopic">Complejidad en Espacio</a>
+      <a href="/complejidad/big-o" class="subtopic">Notación Big-O</a>
+
+      <!-- TOPIC 6 -->
+      <a href="/busquedas/" class="topic">Algoritmos de Búsqueda</a>
+      <a href="/busquedas/lineal" class="subtopic">Búsqueda Lineal</a>
+      <a href="/busquedas/binary" class="subtopic">Búsqueda Binaria</a>
+      <a href="/busquedas/hash" class="subtopic">Tablas Hash</a>
+
+      <!-- TOPIC 7 -->
+      <a href="/grafo/" class="topic">Grafos</a>
+      <a href="/grafo/definicion" class="subtopic">Definición</a>
+      <a href="/grafo/bfs-dfs" class="subtopic">BFS / DFS</a>
+      <a href="/grafo/dijkstra" class="subtopic">Dijkstra</a>
+      <a href="/grafo/kruskal" class="subtopic">Kruskal</a>
+
+      <!-- TOPIC 8 -->
+      <a href="/programacion-dinamica/" class="topic">Programación Dinámica</a>
+      <a href="/programacion-dinamica/subproblemas" class="subtopic">Subproblemas</a>
+      <a href="/programacion-dinamica/memoization" class="subtopic">Memoización</a>
+      <a href="/programacion-dinamica/tabulacion" class="subtopic">Tabulación</a>
+
+
+  </div>
+
   <header id="topHeader">
     <div id="searchContainerTop">
       <a href="/" class="search-logo-top" aria-label="Inicio"><img src="assets/logo.svg" alt="Logo" class="site-logo"></a>
@@ -171,7 +225,20 @@ main { padding-top: calc(var(--topHeader-h) + 1rem); }
       <div class="search-icon"></div>
     </div>
 
+    <nav class="top-links">
+      <a href="/tutoriales/">Tutoriales</a>
+      <a href="/ejercicios/">Ejercicios</a>
+      <a href="/cursos/">Cursos</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </nav>
   </header>
+
+  <script src="js/app.js"></script>
 
 <main>
   <h1>Resultados de búsqueda</h1>
@@ -212,40 +279,7 @@ main { padding-top: calc(var(--topHeader-h) + 1rem); }
   const rawQuery = urlParams.get('q') || '';
   const query = rawQuery.trim();
 
-  // --- Theme preference (persisted in localStorage) ---
-  const THEME_KEY = 'theme_pref_v1';
-  const themeBtn = document.getElementById('themeBtn');
-  const themeIcon = document.getElementById('themeIcon');
-
-  function applyTheme(pref) {
-    if (!pref) pref = 'light';
-    if (pref === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.body.classList.add('dark');
-      if (themeIcon) themeIcon.src = 'assets/sun-icon.svg';
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.body.classList.remove('dark');
-      if (themeIcon) themeIcon.src = 'assets/moon-icon.svg';
-    }
-  }
-
-  try {
-    const saved = localStorage.getItem(THEME_KEY) || 'light';
-    applyTheme(saved);
-  } catch (e) { /* ignore localStorage errors */ }
-
-  if (themeBtn) {
-    themeBtn.addEventListener('click', () => {
-      const isDark = document.body.classList.toggle('dark');
-      const newPref = isDark ? 'dark' : 'light';
-      applyTheme(newPref);
-      try { localStorage.setItem(THEME_KEY, newPref); } catch (e) {}
-    });
-    themeBtn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); themeBtn.click(); } });
-  }
-
-  // --- Top search input: populate with current query and handle Enter ---
+  // --- Prefill top search input (keep only what is page-specific) ---
   const topInput = document.getElementById('topSearchInput');
   if (topInput) {
     topInput.value = rawQuery || '';
@@ -253,14 +287,7 @@ main { padding-top: calc(var(--topHeader-h) + 1rem); }
       const len = topInput.value.length;
       try { topInput.setSelectionRange(len, len); } catch (e) {}
     });
-    topInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        const q = topInput.value.trim();
-        if (!q) return;
-        window.location.href = `/search.html?q=${encodeURIComponent(q)}`;
-      }
-    });
-    // allow clicking to focus and place caret at end
+    // clicking places caret at end
     topInput.addEventListener('click', () => { const len = topInput.value.length; try { topInput.setSelectionRange(len, len); } catch (e) {} });
   }
 

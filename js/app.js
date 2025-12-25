@@ -6,47 +6,49 @@ const hamburger = document.getElementById("hamburger");
 const sideMenu = document.getElementById("sideMenu");
 const overlay = document.getElementById("overlay");
 
-hamburger.onclick = () => {
-    // compute willOpen before toggling
-    const willOpen = !sideMenu.classList.contains('open');
-    if (willOpen) {
-        // ensure page is scrolled to top so headers are fully visible when menu opens
-        try { window.scrollTo({ top: 0, left: 0, behavior: 'auto' }); } catch (e) { window.scrollTo(0,0); }
-    }
-    const isOpen = sideMenu.classList.toggle("open");
-    hamburger.classList.toggle("open", isOpen);
-    hamburger.setAttribute('aria-expanded', String(isOpen));
-    // show full-screen overlay (dims whole page below headers)
-    document.body.classList.toggle('side-open', isOpen);
-    overlay.classList.toggle("show", isOpen);
-    // forward scroll/keys to sideMenu when open; do NOT modify body overflow
-    if (isOpen) {
-        addSideScrollHandlers();
-    } else {
+// Only wire up the full side-menu behavior when the required elements exist.
+if (hamburger && sideMenu && overlay) {
+    hamburger.onclick = () => {
+        // compute willOpen before toggling
+        const willOpen = !sideMenu.classList.contains('open');
+        if (willOpen) {
+            // ensure page is scrolled to top so headers are fully visible when menu opens
+            try { window.scrollTo({ top: 0, left: 0, behavior: 'auto' }); } catch (e) { window.scrollTo(0,0); }
+        }
+        const isOpen = sideMenu.classList.toggle("open");
+        hamburger.classList.toggle("open", isOpen);
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+        // show full-screen overlay (dims whole page below headers)
+        document.body.classList.toggle('side-open', isOpen);
+        overlay.classList.toggle("show", isOpen);
+        // forward scroll/keys to sideMenu when open; do NOT modify body overflow
+        if (isOpen) {
+            addSideScrollHandlers();
+        } else {
+            removeSideScrollHandlers();
+            // reset internal scroll so reopening starts at top
+            try { sideMenu.scrollTop = 0; } catch (e) { /* ignore */ }
+        }
+    };
+
+    overlay.onclick = () => {
+        hamburger.classList.remove("open");
+        sideMenu.classList.remove("open");
+        overlay.classList.remove("show");
+        // remove event handlers and body state
         removeSideScrollHandlers();
-        // reset internal scroll so reopening starts at top
+        document.body.classList.remove('side-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        // reset side menu internal scroll when closed
         try { sideMenu.scrollTop = 0; } catch (e) { /* ignore */ }
-    }
-};
+    };
 
-overlay.onclick = () => {
-    hamburger.classList.remove("open");
-    sideMenu.classList.remove("open");
-    overlay.classList.remove("show");
-    // remove event handlers and body state
-    removeSideScrollHandlers();
-    document.body.classList.remove('side-open');
-    hamburger.setAttribute('aria-expanded', 'false');
-    // reset side menu internal scroll when closed
-    try { sideMenu.scrollTop = 0; } catch (e) { /* ignore */ }
-};
-
-// Allow closing the side menu with Escape
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && sideMenu.classList.contains('open')) {
-        overlay.click();
-    }
-});
+    // Allow closing the side menu with Escape
+    // (Escape key handler moved inside guarded menu block)
+} else if (hamburger) {
+    // If hamburger exists but menu/overlay are missing, hide the hamburger to avoid errors
+    hamburger.style.display = 'none';
+}
 
 
 // scroll.js (synchronized with actual scroll delta)
@@ -152,6 +154,7 @@ if (searchCloseBtn) {
 // THEME button moved to subHeader. Keep only theme toggle logic and remove settings/language code.
 const themeBtn = document.getElementById("themeBtn");
 const themeIcon = document.getElementById("themeIcon");
+const prismLink = document.getElementById("prism-theme");
 
 // Persisted theme preference key (shared with search.html)
 const THEME_KEY = 'theme_pref_v1';
@@ -171,9 +174,11 @@ if (themeIcon) {
     if (document.body.classList.contains('dark')) {
         themeIcon.src = 'assets/sun-icon.svg';
         themeBtn && themeBtn.setAttribute('data-tooltip', 'Cambiar a Modo Claro');
+        prismLink.href = "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.css"; // tema oscuro
     } else {
         themeIcon.src = 'assets/moon-icon.svg';
         themeBtn && themeBtn.setAttribute('data-tooltip', 'Cambiar a Modo Oscuro');
+        prismLink.href = "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism.css"; // tema claro
     }
 }
 
@@ -183,9 +188,11 @@ if (themeBtn) {
         if (dark) {
             themeIcon.src = 'assets/sun-icon.svg';
             themeBtn.setAttribute('data-tooltip', 'Cambiar a Modo Claro');
+            prismLink.href = "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.css"; // tema oscuro
         } else {
             themeIcon.src = 'assets/moon-icon.svg';
             themeBtn.setAttribute('data-tooltip', 'Cambiar a Modo Oscuro');
+            prismLink.href = "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism.css"; // tema claro
         }
 
         try { localStorage.setItem(THEME_KEY, dark ? 'dark' : 'light'); } catch (e) {}
@@ -252,28 +259,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Add copy buttons to code blocks and handle copy action
 function setupCopyButtons() {
     const pres = document.querySelectorAll('.content pre');
+
     pres.forEach(pre => {
-        // avoid duplicate
         if (pre.dataset.copyInit) return;
         pre.dataset.copyInit = '1';
 
-        // ensure container is positioned
         pre.style.position = pre.style.position || 'relative';
 
         const btn = document.createElement('button');
         btn.className = 'copy-btn';
+
         const img = document.createElement('img');
-        // set copy icon based on current theme
-        img.src = document.body.classList.contains('dark') ? 'assets/copy-icon-modo-oscuro.svg' : 'assets/copy-icon-modo-claro.svg';
         img.alt = 'Copiar';
+
+        // función para icono de copiar según tema
+        const getCopyIcon = () =>
+            document.body.classList.contains('dark')
+                ? 'assets/copy-icon-modo-oscuro.svg'
+                : 'assets/copy-icon-modo-claro.svg';
+
+        const getTickIcon = () =>
+            document.body.classList.contains('dark')
+                ? 'assets/tick-icon-modo-oscuro.svg'
+                : 'assets/tick-icon-modo-claro.svg';
+
+        img.src = getCopyIcon();
         btn.appendChild(img);
 
         const feedback = document.createElement('div');
         feedback.className = 'copy-feedback';
-        //feedback.textContent = 'Copiado al Portapapeles';
         feedback.textContent = 'Copiado!';
 
         pre.appendChild(btn);
@@ -281,23 +297,28 @@ function setupCopyButtons() {
 
         btn.addEventListener('click', async () => {
             try {
-                // copy content excluding the appended button/feedback elements
                 const clone = pre.cloneNode(true);
-                const btns = clone.querySelectorAll('.copy-btn, .copy-feedback');
-                btns.forEach(n => n.remove());
+                clone.querySelectorAll('.copy-btn, .copy-feedback')
+                    .forEach(n => n.remove());
+
                 const codeText = clone.innerText.trim();
                 await navigator.clipboard.writeText(codeText);
-                        // swap icon to tick depending on current theme
-                const old = img.src;
-                const tick = document.body.classList.contains('dark') ? 'assets/tick-icon-modo-oscuro.svg' : 'assets/tick-icon-modo-claro.svg';
-                img.src = tick;
-                img.dataset.isTick = '1';
+
+                // mostrar tick
+                img.src = getTickIcon();
                 feedback.classList.add('show');
-                setTimeout(() => {
-                    img.src = old;
-                    delete img.dataset.isTick;
+
+                // cancelar timeout anterior
+                if (img._copyTimeout) {
+                    clearTimeout(img._copyTimeout);
+                }
+
+                // restaurar icono correcto según tema ACTUAL
+                img._copyTimeout = setTimeout(() => {
+                    img.src = getCopyIcon();
                     feedback.classList.remove('show');
                 }, 1500);
+
             } catch (err) {
                 console.error('copy failed', err);
             }
@@ -305,6 +326,80 @@ function setupCopyButtons() {
     });
 }
 
+
+/*
+// Add copy buttons to code blocks and handle copy action
+function setupCopyButtons() {
+    const pres = document.querySelectorAll('.content pre');
+
+    pres.forEach(pre => {
+        // evitar duplicados
+        if (pre.dataset.copyInit) return;
+        pre.dataset.copyInit = '1';
+
+        // asegurar posición
+        pre.style.position = pre.style.position || 'relative';
+
+        // botón copiar
+        const btn = document.createElement('button');
+        btn.className = 'copy-btn';
+
+        const img = document.createElement('img');
+        img.src = document.body.classList.contains('dark')
+            ? 'assets/copy-icon-modo-oscuro.svg'
+            : 'assets/copy-icon-modo-claro.svg';
+        img.alt = 'Copiar';
+
+        // guardar icono original UNA VEZ
+        img.dataset.originalSrc = img.src;
+
+        btn.appendChild(img);
+
+        // feedback
+        const feedback = document.createElement('div');
+        feedback.className = 'copy-feedback';
+        feedback.textContent = 'Copiado!';
+
+        pre.appendChild(btn);
+        pre.appendChild(feedback);
+
+        btn.addEventListener('click', async () => {
+            try {
+                // copiar texto sin botón ni feedback
+                const clone = pre.cloneNode(true);
+                clone.querySelectorAll('.copy-btn, .copy-feedback')
+                    .forEach(n => n.remove());
+
+                const codeText = clone.innerText.trim();
+                await navigator.clipboard.writeText(codeText);
+
+                // icono tick según tema
+                const tick = document.body.classList.contains('dark')
+                    ? 'assets/tick-icon-modo-oscuro.svg'
+                    : 'assets/tick-icon-modo-claro.svg';
+
+                // mostrar feedback
+                img.src = tick;
+                feedback.classList.add('show');
+
+                // cancelar timeout anterior
+                if (img._copyTimeout) {
+                    clearTimeout(img._copyTimeout);
+                }
+
+                // restaurar estado
+                img._copyTimeout = setTimeout(() => {
+                    img.src = img.dataset.originalSrc;
+                    feedback.classList.remove('show');
+                }, 1500);
+
+            } catch (err) {
+                console.error('copy failed', err);
+            }
+        });
+    });
+}
+*/
 document.addEventListener('DOMContentLoaded', setupCopyButtons);
 
 // The previous dynamic sub-links bounding logic has been removed because
@@ -375,4 +470,38 @@ function setupSearchBars() {
     });
 }
 
+
+//TODO: quitar? //Era para cambiar clase del subheader al abrir/cerrar búsqueda
+/*
+window.addEventListener("DOMContentLoaded", () => {
+    const searchSub = document.getElementById('searchContainerSub');
+    const subHeader = document.getElementById('subHeader');
+
+    if (searchSub && subHeader) {
+        const observer = new MutationObserver(() => {
+            if (searchSub.classList.contains('expanded')) {
+                subHeader.classList.add('search-open');
+            } else {
+                subHeader.classList.remove('search-open');
+            }
+        });
+
+        observer.observe(searchSub, { attributes: true, attributeFilter: ['class'] });
+    }
+});
+*/
+//TODO: quitar?
+
 document.addEventListener('DOMContentLoaded', setupSearchBars);
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (!window.Prism) {
+        console.error('Prism NO está cargado');
+        return;
+    }
+
+    const blocks = document.querySelectorAll('pre code');
+    console.log('Bloques encontrados:', blocks.length);
+
+    Prism.highlightAll();
+});

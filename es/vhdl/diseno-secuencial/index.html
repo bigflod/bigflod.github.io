@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de prueba</title>
+    <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css" rel="stylesheet" />
+    <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+    <!-- IDIOMAS -->
+
+    <!-- IDIOMAS -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+<div id="overlay"></div>
+
+<div class="side-menu" id="sideMenu">
+        <a href="/es/">Inicio</a>
+    <!-- TOPIC -->
+    <a href="/es/vhdl/modelado-estructural/" class="topic">Modelado Estructural</a>
+    <a href="/es/vhdl/modelado-estructural/componentes/" class="subtopic">Componentes</a>
+    <a href="/es/vhdl/modelado-estructural/generics/" class="subtopic">Generics</a>
+    <a href="/es/vhdl/modelado-estructural/port-map/" class="subtopic">Port Map</a>
+
+
+    <!-- TOPIC -->
+    <a href="/es/vhdl/modelado-comportamental/" class="topic">Modelado Comportamental</a>
+    <a href="/es/vhdl/modelado-comportamental/process/" class="subtopic">Process</a>
+    <a href="/es/vhdl/modelado-comportamental/sensitivity-list/" class="subtopic">Sensitivity List</a>
+    <a href="/es/vhdl/modelado-comportamental/variables-vs-senales/" class="subtopic">Variables Vs Senales</a>
+    <a href="/es/vhdl/modelado-comportamental/wait/" class="subtopic">Wait</a>
+
+
+    <!-- TOPIC -->
+    <a href="/es/vhdl/diseno-combinacional/" class="topic">Diseno Combinacional</a>
+    <a href="/es/vhdl/diseno-combinacional/descripcion-rtl/" class="subtopic">Descripcion Rtl</a>
+    <a href="/es/vhdl/diseno-combinacional/inferencia-de-hardware/" class="subtopic">Inferencia De Hardware</a>
+    <a href="/es/vhdl/diseno-combinacional/latches-vs-flip-flops/" class="subtopic">Latches Vs Flip Flops</a>
+
+
+    <!-- TOPIC -->
+    <a href="/es/vhdl/diseno-secuencial/" class="topic">Diseno Secuencial</a>
+    <a href="/es/vhdl/diseno-secuencial/maquinas-de-estados/" class="subtopic">Maquinas De Estados</a>
+    <a href="/es/vhdl/diseno-secuencial/sincronizacion/" class="subtopic">Sincronizacion</a>
+    <a href="/es/vhdl/diseno-secuencial/reset/" class="subtopic">Reset</a>
+    <a href="/es/vhdl/diseno-secuencial/clock-enable/" class="subtopic">Clock Enable</a>
+
+
+    <!-- TOPIC -->
+    <a href="/es/vhdl/simulacion-y-verificacion/" class="topic">Simulacion Y Verificacion</a>
+    <a href="/es/vhdl/simulacion-y-verificacion/testbench/" class="subtopic">Testbench</a>
+    <a href="/es/vhdl/simulacion-y-verificacion/asserts/" class="subtopic">Asserts</a>
+    <a href="/es/vhdl/simulacion-y-verificacion/cobertura/" class="subtopic">Cobertura</a>
+    <a href="/es/vhdl/simulacion-y-verificacion/simulacion-vs-sintesis/" class="subtopic">Simulacion Vs Sintesis</a>
+
+
+    <!-- TOPIC -->
+    <a href="/es/vhdl/implementacion/" class="topic">Implementacion</a>
+    <a href="/es/vhdl/implementacion/sintesis/" class="subtopic">Sintesis</a>
+    <a href="/es/vhdl/implementacion/timing-analysis/" class="subtopic">Timing Analysis</a>
+    <a href="/es/vhdl/implementacion/fpga/" class="subtopic">Fpga</a>
+    <a href="/es/vhdl/implementacion/optimizacion/" class="subtopic">Optimizacion</a>
+
+
+</div>
+
+<header id="topHeader">
+    <div id="searchContainerTop">
+        <a href="/es/" class="search-logo-top" aria-label="Inicio"><img src="assets/logo.svg" alt="Logo" class="site-logo"></a>
+        <input class="search-input" type="text" placeholder="Buscar...">
+        <button id="themeBtn" class="theme-btn-top" aria-label="Cambiar tema">
+            <img id="themeIcon" src="assets/moon-icon.svg" alt="Tema">
+        </button>
+        <div class="search-icon"></div>
+    </div>
+
+    <nav class="top-links">
+        <a href="/tutoriales/">Tutoriales</a>
+        <a href="/ejercicios/">Ejercicios</a>
+        <a href="/cursos/">Cursos</a>
+
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </nav>
+</header>
+
+<div id="subHeader">
+    <div class="sub-left">
+        <nav class="sub-crumbs">
+            <a class="crumb" data-part="Vhdl">Vhdl</a>
+        </nav>
+    </div>
+    <nav class="sub-links">
+        <a href="/es/vhdl/modelado-estructural/">Modelado Estructural</a>
+<a href="/es/vhdl/modelado-comportamental/">Modelado Comportamental</a>
+<a href="/es/vhdl/diseno-combinacional/">Diseno Combinacional</a>
+<a href="/es/vhdl/simulacion-y-verificacion/">Simulacion Y Verificacion</a>
+<a href="/es/vhdl/implementacion/">Implementacion</a>
+    </nav>
+    <div id="searchContainerSub" aria-hidden="true">
+        <div class="search-icon" role="button" tabindex="0" aria-label="Abrir búsqueda"></div>
+        <input class="search-input" type="text" placeholder="Buscar..." aria-label="Buscar">
+        <div class="closeBtn" role="button" tabindex="0" aria-label="Cerrar búsqueda">×</div>
+    </div>
+</div>
+
+<div class="layout-container">
+    <aside class="sidebar">
+        <h3>Contenido</h3>
+        <ul>
+                        <li><a href="#maquinas-de-estados">Maquinas De Estados</a></li>
+            <li><a href="#sincronizacion">Sincronizacion</a></li>
+            <li><a href="#reset">Reset</a></li>
+            <li><a href="#clock-enable">Clock Enable</a></li>
+        </ul>
+    </aside>
+
+    <article class="content">
+        <img src="/assets/construction-site.webp" width="280">
+<h2>Estamos trabajando en ello</h2>
+<p>Sección <strong>Diseno Secuencial</strong> en construcción.</p>
+<a href="/es/vhdl/diseno-secuencial/" class="back-button">Volver atrás</a>
+
+        <p><a href="#" class="a23">Enlace de ejemplo</a></p>
+        <h2 id="ejemplo1">Ejemplo 1</h2>
+            <pre class="line-numbers"><code class="language-html">&lt;div&gt;Página de Ejemplo&lt;/div&gt;</code></pre>
+    </article>
+
+</div>
+
+<footer>
+© 2025 BIT_GUARDIAN — Todos los derechos reservados.
+</footer>
+    <script src="js/app.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

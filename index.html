@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, follow">
-    <title>Demo Nav Scroll Mejorada</title>
+    <title>Página de prueba</title>
+    <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css" rel="stylesheet" />
+    <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+    <!-- IDIOMAS -->
 
-    <!-- CSS (combined) -->
+    <!-- IDIOMAS -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -16,69 +19,15 @@
 
 <div class="side-menu" id="sideMenu">
     <h3>Menú</h3>
-    <a href="/es/">Inicio</a>
-    <a href="/tutoriales/">Tutoriales</a>
-    <a href="/cursos/">Cursos</a>
-    <a href="/blog/">Blog</a>
-    <!-- Example topic / subtopic entries -->
-      <!-- TOPIC 1 -->
-  <a href="/algoritmos/" class="topic">Introducción a Algoritmos</a>
-  <a href="/algoritmos/definicion" class="subtopic">Definición</a>
-  <a href="/algoritmos/propiedades" class="subtopic">Propiedades</a>
-  <a href="/algoritmos/ejemplos" class="subtopic">Ejemplos básicos</a>
-
-  <!-- TOPIC 2 -->
-  <a href="/estructuras-de-datos/" class="topic">Estructuras de Datos</a>
-  <a href="/estructuras-de-datos/arreglos" class="subtopic">Arreglos</a>
-  <a href="/estructuras-de-datos/listas-enlazadas" class="subtopic">Listas Enlazadas</a>
-  <a href="/estructuras-de-datos/pilas-colas" class="subtopic">Pilas y Colas</a>
-  <a href="/estructuras-de-datos/sets" class="subtopic">Conjuntos (Sets)</a>
-
-  <!-- TOPIC 3 -->
-  <a href="/ordenamiento/" class="topic">Algoritmos de Ordenamiento</a>
-  <a href="/ordenamiento/burbuja" class="subtopic">Ordenamiento Burbuja</a>
-  <a href="/ordenamiento/seleccion" class="subtopic">Ordenamiento por Selección</a>
-  <a href="/ordenamiento/insercion" class="subtopic">Ordenamiento por Inserción</a>
-  <a href="/ordenamiento/rapido-quick" class="subtopic">QuickSort</a>
-  <a href="/ordenamiento/merge" class="subtopic">MergeSort</a>
-
-  <!-- TOPIC 4 -->
-  <a href="/recursion/" class="topic">Recursión</a>
-  <a href="/recursion/concepto" class="subtopic">Concepto de Recursión</a>
-  <a href="/recursion/caso-base" class="subtopic">Caso Base</a>
-  <a href="/recursion/ejemplos" class="subtopic">Ejemplos Recursivos</a>
-
-  <!-- TOPIC 5 -->
-  <a href="/complejidad/" class="topic">Complejidad Algorítmica</a>
-  <a href="/complejidad/tiempo" class="subtopic">Complejidad en Tiempo</a>
-  <a href="/complejidad/espacio" class="subtopic">Complejidad en Espacio</a>
-  <a href="/complejidad/big-o" class="subtopic">Notación Big-O</a>
-
-  <!-- TOPIC 6 -->
-  <a href="/busquedas/" class="topic">Algoritmos de Búsqueda</a>
-  <a href="/busquedas/lineal" class="subtopic">Búsqueda Lineal</a>
-  <a href="/busquedas/binary" class="subtopic">Búsqueda Binaria</a>
-  <a href="/busquedas/hash" class="subtopic">Tablas Hash</a>
-
-  <!-- TOPIC 7 -->
-  <a href="/grafo/" class="topic">Grafos</a>
-  <a href="/grafo/definicion" class="subtopic">Definición</a>
-  <a href="/grafo/bfs-dfs" class="subtopic">BFS / DFS</a>
-  <a href="/grafo/dijkstra" class="subtopic">Dijkstra</a>
-  <a href="/grafo/kruskal" class="subtopic">Kruskal</a>
-
-  <!-- TOPIC 8 -->
-  <a href="/programacion-dinamica/" class="topic">Programación Dinámica</a>
-  <a href="/programacion-dinamica/subproblemas" class="subtopic">Subproblemas</a>
-  <a href="/programacion-dinamica/memoization" class="subtopic">Memoización</a>
-  <a href="/programacion-dinamica/tabulacion" class="subtopic">Tabulación</a>
-
-
+    <a href="/es/algoritmos/" class="topic">Algoritmos</a>
+    <a href="/es/matematicas/" class="topic">Matemáticas</a>
+    <a href="/es/tecnologia-de-computadores/" class="topic">Tecnología de Computadores</a>
+    <a href="/es/vhdl/" class="topic">VHDL</a>
 </div>
 
 <header id="topHeader">
     <div id="searchContainerTop">
-        <a href="/" class="search-logo-top" aria-label="Inicio"><img src="assets/logo.svg" alt="Logo" class="site-logo"></a>
+        <a href="/es/" class="search-logo-top" aria-label="Inicio"><img src="assets/logo.svg" alt="Logo" class="site-logo"></a>
         <input class="search-input" type="text" placeholder="Buscar...">
         <button id="themeBtn" class="theme-btn-top" aria-label="Cambiar tema">
             <img id="themeIcon" src="assets/moon-icon.svg" alt="Tema">
@@ -100,24 +49,12 @@
 </header>
 
 <div id="subHeader">
-    <div class="sub-left">
-        <nav class="sub-crumbs">
-            <a class="crumb" data-part="Java">Java</a>
-            <span class="sep">&nbsp;&gt;&nbsp;</span>
-            <a class="crumb" data-part="POO">POO</a>
-            <span class="sep">&nbsp;&gt;&nbsp;</span>
-            <a class="crumb" data-part="Herencia">Herencia</a>
-        </nav>
-    </div>
     <nav class="sub-links">
-        <a href="#">Docs</a>
-        <a href="#">Ejemplos</a>
-        <a href="#">Conceptos</a>
+        <a href="/es/matematicas/">Matemáticas</a>
+        <a href="/es/algoritmos/">Algoritmos</a>
+        <a href="/es/tecnologia-de-computadores/">Tecnología de Computadores</a>
         <!--Duplicados para probar colisiones-->
-        <a href="#">Docs</a>
-        <a href="#">Ejemplos</a>
-        <a href="#">Conceptos</a>
-        
+        <a href="/es/vhdl/">VHDL</a>
         
     </nav>
     <div id="searchContainerSub" aria-hidden="true">
@@ -139,26 +76,115 @@
         <a href="#ejemplo2">Ejemplo 2</a>
         <a href="#ejemplo3">Ejemplo 3</a>
         <a href="#ejemplo4">Ejemplo 4</a>
+        <a href="#ejemplo5">Ejemplo 5</a>
     </aside>
 
     <article class="content">
         <h1 id="intro">Introducción</h1>
         <p>Contenido introductorio...</p>
-        <h2 id="ejemplo1">Ejemplo 1</h2><pre>&lt;div&gt;Hola Mundo&lt;/div&gt;</pre>
-        <h2 id="ejemplo2">Ejemplo 2</h2><pre>&lt;div&gt;Más contenido...&lt;/div&gt;</pre>
-        <h2 id="ejemplo3">Ejemplo 3</h2><pre>Otro bloque...</pre>
-        <h2 id="ejemplo4">Ejemplo 4</h2><pre>Etc...</pre>
-    </article>
+        <p><a href="#" class="a23">Enlace de ejemplo</a></p>
+        <h2 id="ejemplo1">Ejemplo 1</h2>
+            <pre class="line-numbers"><code class="language-html">&lt;div&gt;Hola Mundo&lt;/div&gt;</code></pre>
+        <h2 id="ejemplo2">Ejemplo 2</h2>
+            <pre class="line-numbers"><code class="language-java">
+public class HolaMundo {
+    public static void main(String[] args) {
+        System.out.println("¡Hola, mundo!");
+        
+        int numero = 10;
+        for (int i = 0; i &lt; numero; i++) {
+            System.out.println("Número: " + i);
+        }
+    }
+}
+    </code></pre>
+        <h2 id="ejemplo3">Ejemplo 3</h2>
+        <p>Otro bloque...</p>
+        <h2 id="ejemplo4">Ejemplo 4</h2>
+        <pre class="line-numbers"><code class="language-vhdl">
+-- Esto es un comentario en VHDL
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity AND_Gate is
+    Port ( A : in  STD_LOGIC;
+           B : in  STD_LOGIC;
+           Y : out STD_LOGIC);
+end AND_Gate;
+
+architecture Behavioral of AND_Gate is
+begin
+    Y &lt;= A and B;
+end Behavioral;
+    </code></pre>
+
+
+<h2 id="ejemplo5">Ejemplo 5</h2>
+<pre class="line-numbers"><code class="language-cpp">
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+int main() {
+    std::vector&lt;int&gt; numeros = {5, 2, 9, 1, 7};
+
+    std::cout &lt;&lt; "Números originales: ";
+    for(int n : numeros) {
+        std::cout &lt;&lt; n &lt;&lt; " ";
+    }
+    std::cout &lt;&lt; std::endl;
+
+    std::sort(numeros.begin(), numeros.end());
+
+    std::cout &lt;&lt; "Números ordenados: ";
+    for(int n : numeros) {
+        std::cout &lt;&lt; n &lt;&lt; " ";
+    }
+    std::cout &lt;&lt; std::endl;
+
+    return 0;
+}
+</code></pre>
+
 </div>
+    </article>
 
 <footer>
-© 2025 BIG_FLOD — Todos los derechos reservados.
+© 2025 BIT_GUARDIAN — Todos los derechos reservados.
 </footer>
 
-<!-- Settings removed: theme toggle moved to subHeader -->
 
-<!-- JS (combined) -->
+
+
+<!-- Code coloring -->
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+
+<!-- Language specific -->
+ <!-- cpp -->
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-clike.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-cpp.min.js"></script>
+ <!-- cpp -->
+ <!-- java -->
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+ <!-- java -->
+ <!-- Language specific -->
+
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<!-- Code coloring -->
+
 <script src="js/app.js"></script>
 
+<!-- VHDL -->
+<script>
+    Prism.languages.vhdl = {
+        'comment': /--.*$/m,
+        'string': /"(?:\\.|[^\\"])*"/,
+        'keyword': /\b(entity|behavioral|architecture|is|begin|end|library|use|port|in|out|std_logic|all|and|or|not)\b/i,
+        'number': /\b\d+\b/,
+        'operator': /<=|=>|=|and|or|not/
+    };
+</script>
+<!-- VHDL -->
 </body>
 </html>

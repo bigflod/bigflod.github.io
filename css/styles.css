@@ -115,6 +115,20 @@ body.dark {
 body.dark #searchContainerTop .logo-top-light { display:none; }
 body.dark #searchContainerTop .logo-top-dark { display:block; }
 
+/* Área clickeable ampliada */
+#themeBtn::before {
+    content: "";
+    position: absolute;
+    top: +20px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+}
+
+#themeBtn:hover {
+    filter: brightness(1.15) saturate(1.2);
+}
+
 #searchContainerTop .search-icon {
     position: absolute;
     right: .8rem;
@@ -142,29 +156,36 @@ body.dark #searchContainerTop .logo-top-dark { display:block; }
 }
 .theme-btn-top img { width:20px; height:20px; display:block; }
 
-/* Hamburger: ensure pseudo elements are constrained to the hamburger container */
-/*
-.hamburger { position: relative; width:36px; height:24px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; margin-left:12px; }
-.hamburger span,
-.hamburger span::before,
-.hamburger span::after {
-    position:absolute;
-    width:20px;
-    height:3px;
-    background:var(--header-text);
-    border-radius:2px;
-    transition:all .28s cubic-bezier(.2,.9,.3,1);
-    left:50%; transform:translateX(-50%);
+/* Content link style (highlighted link) */
+
+.a23 {
+    color: var(--accent-color);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 2px;
 }
 
-.hamburger span { top:50%; transform:translate(-50%,-50%); }
-.hamburger span::before { content:""; top:-8px; }
-.hamburger span::after { content:""; bottom:-8px; }
+/*TODO: quitar?*/
+/* Para todos los navegadores */
+.layout-container {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
 
-.hamburger.open span { background:transparent; }
-.hamburger.open span::before { transform:translateX(-50%) rotate(45deg); top:50%; }
-.hamburger.open span::after { transform:translateX(-50%) rotate(-45deg); bottom:50%; }
-*/
+.layout-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+/* Para toda la página */
+* {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+}
+
+*::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+/*TODO: quitar?*/
 
 /* LINKS */
 nav.top-links {
@@ -221,7 +242,10 @@ nav.top-links a::before {
 }
 
 /* ensure subHeader is the positioning context for absolutely positioned children */
-.sub-links { display:flex; gap:clamp(1rem,2vw,2rem); }
+.sub-links { 
+    display:flex;
+    gap:clamp(1rem,2vw,2rem); 
+}
 
 /* Center sub-links and place search to the right */
 /* Sub-links: use the previous underline animation */
@@ -245,8 +269,8 @@ nav.top-links a::before {
 }
 
 .sub-links a { position:relative; color:var(--header-text); text-decoration:none; padding:0.2rem 0.25rem; }
-.sub-links a::after { content:""; position:absolute; bottom:-3px; left:0; width:0%; height:2px; background:var(--accent-color); transition:width .25s ease; }
-.sub-links a:hover::after { width:100%; }
+.sub-links a::after { content:""; position:absolute; bottom:-3px; left:0; right:0; height:3px; background:var(--accent-color); transform: scaleX(0); transform-origin: center; transition: transform .25s ease; }
+.sub-links a:hover::after { transform: scaleX(1); }
 
 /* Position the search container absolutely on the right so it doesn't affect centering */
 #searchContainerSub {
@@ -380,6 +404,8 @@ body.dark .search-logo .logo-light { display:none; }
     padding: 0;
 }
 
+.hamburger:hover { transform: scale(1.025); }
+
 .hamburger span,
 .hamburger span::before,
 .hamburger span::after {
@@ -415,29 +441,28 @@ body.dark .search-logo .logo-light { display:none; }
 }
 
 /* Subheader left breadcrumb placeholder */
-.sub-left { display:flex; align-items:center; margin-right:1rem; }
-.sub-crumbs { font-weight:700; display:flex; gap:0.4rem; align-items:center; }
-.sub-crumbs .crumb { color:var(--header-text); text-decoration:none; cursor:pointer; }
+.sub-left { 
+    display:flex; 
+    align-items:center; 
+    margin-right:1rem;
+}
+
+.sub-crumbs { 
+    font-weight:700;
+    display:flex;
+    gap:0.4rem;
+    align-items:center;
+}
+/*TODO: revisar*//*TODO: revisar*/
+.sub-crumbs .crumb { color:var(--accent-color); text-decoration:none; cursor:pointer; }
+
+
 .sub-crumbs .sep { color:var(--subtext); }
 .sub-crumbs .crumb { position:relative; }
 .sub-crumbs .crumb::after { content: ''; position:absolute; left:0; right:0; height:4px; bottom:-6px; background:var(--accent-color); border-radius:4px; opacity:0; transition:opacity .18s, transform .18s; transform: translateY(2px); }
 .sub-crumbs .crumb:hover::after { opacity:1; transform: translateY(0); }
-body.dark .sub-crumbs .crumb { color:#fff; }
+body.dark .sub-crumbs .crumb { color:var(--accent-color); }
 
-/* Subheader hamburger (appears to the right of search when collapsed) */
-.sub-hamburger { display:none; position:relative; width:30px; height:20px; align-items:center; justify-content:center; margin-left:8px; cursor:pointer; }
-.sub-hamburger { display:none; position:relative; width:34px; height:22px; align-items:center; justify-content:center; margin-left:14px; cursor:pointer; }
-.sub-hamburger span, .sub-hamburger span::before, .sub-hamburger span::after { position:absolute; width:20px; height:2px; background:var(--header-text); border-radius:2px; left:50%; transform:translateX(-50%); }
-.sub-hamburger span { top:50%; transform:translate(-50%,-50%); }
-.sub-hamburger span::before { content:""; top:-6px; }
-.sub-hamburger span::after { content:""; bottom:-6px; }
-
-/* show sub-hamburger when collapsed icon is visible */
-#searchContainerSub.collapsed ~ .sub-hamburger { display:inline-flex; }
-
-.sub-hamburger.open span { background:transparent; }
-.sub-hamburger.open span::before { transform:translateX(-50%) rotate(45deg); top:50%; }
-.sub-hamburger.open span::after { transform:translateX(-50%) rotate(-45deg); bottom:50%; }
 
 /* Ensure headings are visible when linked via anchor (offset for fixed headers) */
 .content h1, .content h2, .content h3, .content h4 {
@@ -449,6 +474,8 @@ body.dark .sub-crumbs .crumb { color:#fff; }
 .header-info { max-width:1200px; margin:0 auto; display:flex; gap:1rem; align-items:center; }
 
 /* Code block styling and copy button */
+
+/*
 .content pre {
     background: color-mix(in srgb, var(--content-bg) 96%, black 0%);
     border:1px solid var(--muted);
@@ -459,6 +486,15 @@ body.dark .sub-crumbs .crumb { color:#fff; }
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
 }
 
+.content pre { border: 1px solid var(--accent-color); }
+*/
+
+.content pre { 
+    border: 2px solid var(--accent-color); 
+    border-radius:8px;
+}
+
+
 .copy-btn {
     position:absolute; top:8px; right:8px; width:34px; height:34px; border-radius:6px; display:flex; align-items:center; justify-content:center; cursor:pointer; background:var(--content-bg); border:1px solid var(--muted);
 }
@@ -468,9 +504,7 @@ body.dark .sub-crumbs .crumb { color:#fff; }
 .copy-feedback { position:absolute; top:8px; right:46px; background:rgba(0,0,0,0.8); color:#fff; padding:6px 8px; border-radius:6px; font-size:0.85rem; opacity:0; transform:translateY(-6px); transition:opacity .18s, transform .18s; pointer-events:none; }
 .copy-feedback.show { opacity:1; transform:translateY(0); }
 
-/* Code block border contrast per theme */
-body.dark .content pre { border: 1px solid #fff; }
-body:not(.dark) .content pre { border: 1px solid #000; }
+
 
 /* Overlay: cover entire viewport to dim whole page including headers */
 #overlay {
@@ -503,8 +537,12 @@ body:not(.dark) .content pre { border: 1px solid #000; }
     z-index: 2600;
 }
 
-.side-menu { box-sizing: border-box; scrollbar-width: none; }
-.side-menu::-webkit-scrollbar { width: 0; height: 0; }
+.body { box-sizing: border-box; scrollbar-width: none; -ms-overflow-style: none; }
+.body::-webkit-scrollbar { width: 0; height: 0; }
+
+.layout-container { box-sizing: border-box; scrollbar-width: none; -ms-overflow-style: none; }
+.layout-container::-webkit-scrollbar { width: 0; height: 0; }
+
 /* Keep side-menu scrollable but hide visual scrollbar */
 .side-menu { box-sizing: border-box; scrollbar-width: none; -ms-overflow-style: none; }
 .side-menu::-webkit-scrollbar { width: 0; height: 0; }
@@ -583,7 +621,57 @@ footer {
     .sub-links { display: none; }
     .layout-container { grid-template-columns: 1fr; }
     .side-menu { width: min(85vw, 320px); }
+    .sidebar { display: none; }
 }
+
+/* 1️⃣ Ancho ≤ 1024px: ocultar sub-links */
+@media (max-width: 1024px) {
+    .sub-links {
+        display: none;
+    }
+}
+
+/* 2️⃣ Ancho < 1200px y barra de búsqueda abierta: ocultar sub-links */
+/*
+@media (max-width: 1200px) {
+    #subHeader.search-open .sub-links {
+        display: none;
+    }
+}
+*/
+@media (max-width: 1200px) {
+  body:has(#searchContainerSub.expanded) .sub-links {
+    display: none;
+  }
+}
+
+/* 3️⃣ Ancho < 550px y barra de búsqueda abierta: ocultar breadcrumbs */
+@media (max-width: 550px) {
+    /* #subHeader.search-open .sub-left { */
+    body:has(#searchContainerSub.expanded) .sub-left {
+        display: none;
+    }
+}
+
+/* TODO: quitar?*/
+/* Breadcrumbs desaparecen si pantalla < 550px y barra de búsqueda expandida */
+
+
+/* Sub-links desaparecen si pantalla < 1024px */
+@media (max-width: 1024px) {
+    .sub-links {
+        display: none;
+    }
+}
+
+/* Sub-links desaparecen si pantalla < 1100px y barra expandida */
+@media (max-width: 1100px) {
+    #subHeader.search-open .sub-links {
+        display: none;
+    }
+}
+/* TODO: quitar?*/
+
 
 /* Style links in sub header and side menu to look nicer */
 nav.sub-links a {

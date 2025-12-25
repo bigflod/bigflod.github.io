@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de prueba</title>
+    <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.css" rel="stylesheet" />
+    <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+    <!-- IDIOMAS -->
+
+    <!-- IDIOMAS -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+<div id="overlay"></div>
+
+<div class="side-menu" id="sideMenu">
+        <a href="/es/">Inicio</a>
+    <!-- TOPIC -->
+    <a href="/es/matematicas/algebra-lineal/" class="topic">Algebra Lineal</a>
+    <a href="/es/matematicas/algebra-lineal/espacios-vectoriales/" class="subtopic">Espacios Vectoriales</a>
+    <a href="/es/matematicas/algebra-lineal/bases/" class="subtopic">Bases</a>
+    <a href="/es/matematicas/algebra-lineal/transformaciones-lineales/" class="subtopic">Transformaciones Lineales</a>
+    <a href="/es/matematicas/algebra-lineal/autovalores/" class="subtopic">Autovalores</a>
+    <a href="/es/matematicas/algebra-lineal/diagonalizacion/" class="subtopic">Diagonalizacion</a>
+    <a href="/es/matematicas/algebra-lineal/aplicaciones-computacionales/" class="subtopic">Aplicaciones Computacionales</a>
+
+
+    <!-- TOPIC -->
+    <a href="/es/matematicas/calculo/" class="topic">Calculo</a>
+    <a href="/es/matematicas/calculo/funciones-multivariables/" class="subtopic">Funciones Multivariables</a>
+    <a href="/es/matematicas/calculo/derivadas-parciales/" class="subtopic">Derivadas Parciales</a>
+    <a href="/es/matematicas/calculo/gradiente/" class="subtopic">Gradiente</a>
+    <a href="/es/matematicas/calculo/optimizacion/" class="subtopic">Optimizacion</a>
+    <a href="/es/matematicas/calculo/series/" class="subtopic">Series</a>
+    <a href="/es/matematicas/calculo/convergencia/" class="subtopic">Convergencia</a>
+
+
+    <!-- TOPIC -->
+    <a href="/es/matematicas/matematica-discreta/" class="topic">Matematica Discreta</a>
+    <a href="/es/matematicas/matematica-discreta/logica-formal/" class="subtopic">Logica Formal</a>
+    <a href="/es/matematicas/matematica-discreta/teoria-de-conjuntos/" class="subtopic">Teoria De Conjuntos</a>
+    <a href="/es/matematicas/matematica-discreta/relaciones/" class="subtopic">Relaciones</a>
+    <a href="/es/matematicas/matematica-discreta/combinatoria/" class="subtopic">Combinatoria</a>
+    <a href="/es/matematicas/matematica-discreta/grafos/" class="subtopic">Grafos</a>
+    <a href="/es/matematicas/matematica-discreta/arboles/" class="subtopic">Arboles</a>
+    <a href="/es/matematicas/matematica-discreta/induccion/" class="subtopic">Induccion</a>
+    <a href="/es/matematicas/matematica-discreta/teoria-de-numeros/" class="subtopic">Teoria De Numeros</a>
+
+
+    <!-- TOPIC -->
+    <a href="/es/matematicas/probabilidad/" class="topic">Probabilidad</a>
+    <a href="/es/matematicas/probabilidad/variables-aleatorias/" class="subtopic">Variables Aleatorias</a>
+    <a href="/es/matematicas/probabilidad/distribuciones/" class="subtopic">Distribuciones</a>
+    <a href="/es/matematicas/probabilidad/esperanza/" class="subtopic">Esperanza</a>
+    <a href="/es/matematicas/probabilidad/varianza/" class="subtopic">Varianza</a>
+    <a href="/es/matematicas/probabilidad/procesos-estocasticos/" class="subtopic">Procesos Estocasticos</a>
+    <a href="/es/matematicas/probabilidad/aplicaciones-algoritmicas/" class="subtopic">Aplicaciones Algoritmicas</a>
+
+
+</div>
+
+<header id="topHeader">
+    <div id="searchContainerTop">
+        <a href="/es/" class="search-logo-top" aria-label="Inicio"><img src="assets/logo.svg" alt="Logo" class="site-logo"></a>
+        <input class="search-input" type="text" placeholder="Buscar...">
+        <button id="themeBtn" class="theme-btn-top" aria-label="Cambiar tema">
+            <img id="themeIcon" src="assets/moon-icon.svg" alt="Tema">
+        </button>
+        <div class="search-icon"></div>
+    </div>
+
+    <nav class="top-links">
+        <a href="/tutoriales/">Tutoriales</a>
+        <a href="/ejercicios/">Ejercicios</a>
+        <a href="/cursos/">Cursos</a>
+
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </nav>
+</header>
+
+<div id="subHeader">
+    <div class="sub-left">
+        <nav class="sub-crumbs">
+            <a class="crumb" data-part="Matematicas">Matematicas</a>
+        </nav>
+    </div>
+    <nav class="sub-links">
+        <a href="/es/matematicas/algebra-lineal/">Algebra Lineal</a>
+<a href="/es/matematicas/calculo/">Calculo</a>
+<a href="/es/matematicas/matematica-discreta/">Matematica Discreta</a>
+    </nav>
+    <div id="searchContainerSub" aria-hidden="true">
+        <div class="search-icon" role="button" tabindex="0" aria-label="Abrir búsqueda"></div>
+        <input class="search-input" type="text" placeholder="Buscar..." aria-label="Buscar">
+        <div class="closeBtn" role="button" tabindex="0" aria-label="Cerrar búsqueda">×</div>
+    </div>
+</div>
+
+<div class="layout-container">
+    <aside class="sidebar">
+        <h3>Contenido</h3>
+        <ul>
+                        <li><a href="#variables-aleatorias">Variables Aleatorias</a></li>
+            <li><a href="#distribuciones">Distribuciones</a></li>
+            <li><a href="#esperanza">Esperanza</a></li>
+            <li><a href="#varianza">Varianza</a></li>
+            <li><a href="#procesos-estocasticos">Procesos Estocasticos</a></li>
+            <li><a href="#aplicaciones-algoritmicas">Aplicaciones Algoritmicas</a></li>
+        </ul>
+    </aside>
+
+    <article class="content">
+        <img src="/assets/construction-site.webp" width="280">
+<h2>Estamos trabajando en ello</h2>
+<p>Sección <strong>Probabilidad</strong> en construcción.</p>
+<a href="/es/matematicas/probabilidad/" class="back-button">Volver atrás</a>
+
+        <p><a href="#" class="a23">Enlace de ejemplo</a></p>
+        <h2 id="ejemplo1">Ejemplo 1</h2>
+            <pre class="line-numbers"><code class="language-html">&lt;div&gt;Página de Ejemplo&lt;/div&gt;</code></pre>
+    </article>
+
+</div>
+
+<footer>
+© 2025 BIT_GUARDIAN — Todos los derechos reservados.
+</footer>
+    <script src="js/app.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>
