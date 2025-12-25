@@ -74,7 +74,7 @@ body.dark {
 .logo {
     width: 32px;
     height: 32px;
-    background: url('../assets/icon-svg') no-repeat center/contain;
+    background: url('/assets/icon-svg') no-repeat center/contain;
     display: inline-block;
     margin-right: 0.5rem;
 }
@@ -134,7 +134,7 @@ body.dark #searchContainerTop .logo-top-dark { display:block; }
     right: .8rem;
     width: 18px;
     height: 18px;
-    background:url('../assets/icono-lupa.svg') no-repeat center/contain;
+    background:url('/assets/icono-lupa.svg') no-repeat center/contain;
 }
 
 /* Theme button placed immediately to the right of the top search input */
@@ -312,14 +312,14 @@ nav.top-links a::before {
     background-repeat:no-repeat;
     background-position:center;
     background-size:contain;
-    background-image: url('../assets/lupa-icon-modo-claro.svg');
+    background-image: url('/assets/lupa-icon-modo-claro.svg');
     cursor:pointer;
     transition: transform .28s cubic-bezier(.2,.9,.3,1);
     z-index:1530;
 }
 
 /* dark mode lupa */
-body.dark #searchContainerSub .search-icon { background-image: url('../assets/lupa-icon-modo-oscuro.svg'); }
+body.dark #searchContainerSub .search-icon { background-image: url('/assets/lupa-icon-modo-oscuro.svg'); }
 
 #searchContainerSub .closeBtn {
     display:none;

@@ -172,11 +172,11 @@ try {
 // Initialize theme icon based on current state
 if (themeIcon) {
     if (document.body.classList.contains('dark')) {
-        themeIcon.src = 'assets/sun-icon.svg';
+        themeIcon.src = '/assets/sun-icon.svg';
         themeBtn && themeBtn.setAttribute('data-tooltip', 'Cambiar a Modo Claro');
         prismLink.href = "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.css"; // tema oscuro
     } else {
-        themeIcon.src = 'assets/moon-icon.svg';
+        themeIcon.src = '/assets/moon-icon.svg';
         themeBtn && themeBtn.setAttribute('data-tooltip', 'Cambiar a Modo Oscuro');
         prismLink.href = "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism.css"; // tema claro
     }
@@ -186,11 +186,11 @@ if (themeBtn) {
     themeBtn.onclick = () => {
         const dark = document.body.classList.toggle('dark');
         if (dark) {
-            themeIcon.src = 'assets/sun-icon.svg';
+            themeIcon.src = '/assets/sun-icon.svg';
             themeBtn.setAttribute('data-tooltip', 'Cambiar a Modo Claro');
             prismLink.href = "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-okaidia.css"; // tema oscuro
         } else {
-            themeIcon.src = 'assets/moon-icon.svg';
+            themeIcon.src = '/assets/moon-icon.svg';
             themeBtn.setAttribute('data-tooltip', 'Cambiar a Modo Oscuro');
             prismLink.href = "https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism.css"; // tema claro
         }
@@ -208,7 +208,7 @@ if (themeBtn) {
         const copyImgs = document.querySelectorAll('.copy-btn img');
         copyImgs.forEach(img => {
             if (!img.dataset.isTick) {
-                img.src = document.body.classList.contains('dark') ? 'assets/copy-icon-modo-oscuro.svg' : 'assets/copy-icon-modo-claro.svg';
+                img.src = document.body.classList.contains('dark') ? '/assets/copy-icon-modo-oscuro.svg' : '/assets/copy-icon-modo-claro.svg';
             }
         });
     };
@@ -277,13 +277,13 @@ function setupCopyButtons() {
         // función para icono de copiar según tema
         const getCopyIcon = () =>
             document.body.classList.contains('dark')
-                ? 'assets/copy-icon-modo-oscuro.svg'
-                : 'assets/copy-icon-modo-claro.svg';
+                ? '/assets/copy-icon-modo-oscuro.svg'
+                : '/assets/copy-icon-modo-claro.svg';
 
         const getTickIcon = () =>
             document.body.classList.contains('dark')
-                ? 'assets/tick-icon-modo-oscuro.svg'
-                : 'assets/tick-icon-modo-claro.svg';
+                ? '/assets/tick-icon-modo-oscuro.svg'
+                : '/assets/tick-icon-modo-claro.svg';
 
         img.src = getCopyIcon();
         btn.appendChild(img);
